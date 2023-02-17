@@ -1,8 +1,10 @@
 import { createRoot } from "react-dom/client";
+import CategoriesCRUD from "./CategoriesCRUD";
 const App = () => {
   return (
     <div>
       <h1>My Start</h1>
+      <CategoriesCRUD />
     </div>
   );
 };
