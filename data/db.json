@@ -1,0 +1,18 @@
+{
+  "Categories": [
+    {
+      "name": "bb",
+      "createdTime": "2023-02-17T17:05:06.557Z",
+      "id": 5
+    }
+  ],
+  "Products": [
+    {
+      "id": 1,
+      "name": "T-Shirt",
+      "price": 100,
+      "categoryId": 1,
+      "createdTime": ""
+    }
+  ]
+}

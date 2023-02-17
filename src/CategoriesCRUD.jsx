@@ -1,67 +1,88 @@
 import { useState, useEffect, useRef } from "react";
-import { db } from "./firebase-config";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const Test = () => {
   const ref = useRef(null);
   const [newName, setNewName] = useState("");
-  const [newCreatedTime, setNewCreatedTime] = useState("");
   const [categories, setCategories] = useState([]);
   const [updateName, setUpdateName] = useState("");
-  const categoriesCollectionRef = collection(db, "Categories");
 
   const createCategory = async () => {
-    await addDoc(categoriesCollectionRef, {
-      name: newName,
-      createdTime: new Date(newCreatedTime),
-    });
-  };
+    const createPost = async () => {
+      const doc = {
+        name: newName,
+        createdTime: new Date(),
+      };
+      await fetch("http://localhost:3000/categories", {
+        method: "POST",
+        body: JSON.stringify(doc),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    };
 
+    createPost();
+  };
   const updateCategory = async (id, name, datetime) => {
-    const categoryDoc = doc(db, "Categories", id);
-    await updateDoc(categoryDoc, {
+    const doc = {
       name: name,
-      createdTime: new Date(datetime),
+      createdTime: datetime,
+    };
+    const res = await fetch(`http://localhost:3000/categories/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(doc),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+    if (res.ok) {
+      const newCategories = categories.map((category) => {
+        if (category.id === id) {
+          return { id, name, createdTime: datetime };
+        }
+        return category;
+      });
+      setCategories(newCategories);
+    }
+    if (!res.ok) {
+      alert("Error updating category");
+    }
   };
 
   const deleteCategory = async (id) => {
-    const categoryDoc = doc(db, "Categories", id);
-    await deleteDoc(categoryDoc);
+    const res = await fetch(`http://localhost:3000/categories/${id}`, {
+      method: "DELETE",
+    });
+    if (res.ok) {
+      const newCategories = categories.filter((category) => category.id !== id);
+      setCategories(newCategories);
+    }
+    if (!res.ok) {
+      alert("Error deleting category");
+    }
   };
 
   useEffect(() => {
     const getCategories = async () => {
-      const data = await getDocs(categoriesCollectionRef);
-      setCategories(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      let uri = "http://localhost:3000/categories";
+      const response = await fetch(uri);
+      const data = await response.json();
+      setCategories(data);
     };
-
     getCategories();
-  }, [categoriesCollectionRef]);
+  }, []);
 
   const startEdit = (id, name) => {
     setUpdateName(name);
     document.getElementById("update_name").focus();
     document.getElementById("confirm_update").addEventListener("click", () => {
-      confirmEdit(id);
+      updateCategory(
+        id,
+        document.getElementById("update_name").value,
+        new Date()
+      );
     });
-  };
-
-  const confirmEdit = (id) => {
-    ref.current.removeEventListener("click", confirmEdit);
-    updateCategory(
-      id,
-      document.getElementById("update_name").value,
-      new Date()
-    );
-    cancelUpdate();
   };
 
   const cancelUpdate = () => {
@@ -76,11 +97,6 @@ const Test = () => {
         required
         onChange={(e) => setNewName(e.target.value)}
       />
-      <input
-        type="datetime-local"
-        required
-        onChange={(e) => setNewCreatedTime(e.target.value)}
-      />
       <button className="create_button" onClick={createCategory}>
         create category
       </button>
@@ -88,7 +104,7 @@ const Test = () => {
       {categories.map((category) => (
         <div key={category.id}>
           <h2>{category.name}</h2>
-          <h3>{category.createdTime.toDate().toString()}</h3>
+          <h3>{category.createdTime.toString()}</h3>
           <button
             className="update_button"
             ref={ref}
@@ -102,6 +118,9 @@ const Test = () => {
           >
             Delete Category
           </button>
+          <Link className="details_link" to={`/CategoryDetails/${category.id}`}>
+            Details
+          </Link>
         </div>
       ))}
       <div>

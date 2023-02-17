@@ -32,3 +32,11 @@ input {
 .update_button {
   background-color: #ff9800;
 }
+
+.details_link {
+  color: #2196f3;
+  text-decoration: none;
+}
+.details_link:hover {
+  text-decoration: underline;
+}
