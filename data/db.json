@@ -1,18 +1,86 @@
 {
-  "Categories": [
+  "categories": [
     {
-      "name": "bb",
-      "createdTime": "2023-02-17T17:05:06.557Z",
-      "id": 5
+      "name": "General",
+      "createdTime": "2023-02-17T19:02:03.689Z",
+      "id": 1
+    },
+    {
+      "name": "News",
+      "createdTime": "2023-02-17T19:02:05.889Z",
+      "id": 2
+    },
+    {
+      "name": "Cat3",
+      "createdTime": "2023-02-17T19:35:02.517Z",
+      "id": 3
+    },
+    {
+      "name": "cat4",
+      "createdTime": "2023-02-17T19:37:15.357Z",
+      "id": 4
     }
   ],
-  "Products": [
+  "products": [
     {
-      "id": 1,
-      "name": "T-Shirt",
-      "price": 100,
-      "categoryId": 1,
-      "createdTime": ""
+      "name": "P1",
+      "price": "199",
+      "quantity": "67",
+      "description": "Test",
+      "image": "https://cdn.shopify.com/s/files/1/0066/1769/4275/products/whitelsmen_2048x2048.jpg?v=1629899502",
+      "createdTime": "2023-02-17T19:21:11.856Z",
+      "categoryId": "1",
+      "id": 1
+    },
+    {
+      "name": "P2",
+      "price": "190",
+      "quantity": "5656",
+      "description": "Test",
+      "image": "https://cdn.shopify.com/s/files/1/0066/1769/4275/products/whitelsmen_2048x2048.jpg?v=1629899502",
+      "createdTime": "2023-02-17T19:26:04.293Z",
+      "categoryId": "1",
+      "id": 2
+    },
+    {
+      "name": "P2",
+      "price": "112",
+      "quantity": "2323",
+      "description": "23",
+      "image": "https://cdn.shopify.com/s/files/1/0066/1769/4275/products/whitelsmen_2048x2048.jpg?v=1629899502",
+      "createdTime": "2023-02-17T19:26:25.920Z",
+      "categoryId": "2",
+      "id": 3
+    },
+    {
+      "name": "P1",
+      "price": "23",
+      "quantity": "123",
+      "description": "Test",
+      "image": "https://cdn.shopify.com/s/files/1/0066/1769/4275/products/whitelsmen_2048x2048.jpg?v=1629899502",
+      "createdTime": "2023-02-17T19:29:42.460Z",
+      "categoryId": "2",
+      "id": 4
+    },
+    {
+      "name": "P2",
+      "price": "231",
+      "quantity": "312",
+      "description": "Test",
+      "image": "https://cdn.shopify.com/s/files/1/0066/1769/4275/products/whitelsmen_2048x2048.jpg?v=1629899502",
+      "createdTime": "2023-02-17T19:35:10.698Z",
+      "categoryId": "3",
+      "id": 5
+    },
+    {
+      "name": "fd",
+      "price": "2",
+      "quantity": "2",
+      "description": "sda",
+      "image": "sda",
+      "createdTime": "2023-02-17T19:37:25.111Z",
+      "categoryId": "4",
+      "id": 6
     }
   ]
 }

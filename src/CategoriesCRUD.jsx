@@ -8,6 +8,9 @@ const Test = () => {
   const [updateName, setUpdateName] = useState("");
 
   const createCategory = async () => {
+    if (newName === "") {
+      return;
+    }
     const createPost = async () => {
       const doc = {
         name: newName,
@@ -20,9 +23,13 @@ const Test = () => {
           "Content-Type": "application/json",
         },
       });
+      const response = await fetch("http://localhost:3000/categories");
+      const data = await response.json();
+      setCategories(data);
     };
 
     createPost();
+    setNewName("");
   };
   const updateCategory = async (id, name, datetime) => {
     const doc = {
@@ -44,9 +51,11 @@ const Test = () => {
         return category;
       });
       setCategories(newCategories);
+      stopUpdate();
     }
     if (!res.ok) {
       alert("Error updating category");
+      stopUpdate();
     }
   };
 
@@ -85,20 +94,21 @@ const Test = () => {
     });
   };
 
-  const cancelUpdate = () => {
+  const stopUpdate = () => {
     setUpdateName("");
   };
 
   return (
     <div>
       <input
-        placeholder="name"
+        placeholder="Category name"
         type="text"
         required
+        value={newName}
         onChange={(e) => setNewName(e.target.value)}
       />
       <button className="create_button" onClick={createCategory}>
-        create category
+        create Category
       </button>
       <h1>Cateogires</h1>
       {categories.map((category) => (
@@ -125,15 +135,16 @@ const Test = () => {
       ))}
       <div>
         <input
-          placeholder="name"
+          placeholder=""
           type="text"
           id="update_name"
           required
           value={updateName}
           onChange={(e) => setUpdateName(e.target.value)}
+          disabled={updateName === ""}
         />
         <button id="confirm_update">update category</button>
-        <button onClick={cancelUpdate}>Cancel Update</button>
+        <button onClick={stopUpdate}>Cancel Update</button>
       </div>
     </div>
   );

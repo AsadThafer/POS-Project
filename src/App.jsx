@@ -3,6 +3,8 @@ import CategoriesCRUD from "./CategoriesCRUD";
 import CategoryDetails from "./CategoryDetails";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AddProductForm from "./AddProductForm";
+import NotFound from "./NotFound.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,7 +24,9 @@ const App = () => {
           </header>
           <Routes>
             <Route path="/CategoryDetails/:id" element={<CategoryDetails />} />
+            <Route path="/AddProductForm/:id" element={<AddProductForm />} />
             <Route path="/" element={<CategoriesCRUD />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </QueryClientProvider>
       </BrowserRouter>

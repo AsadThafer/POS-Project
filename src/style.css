@@ -21,6 +21,10 @@ input {
   box-sizing: border-box;
 }
 
+input:disabled {
+  background-color: #f1f1f1;
+}
+
 .delete_button {
   background-color: #f44336;
 }
@@ -39,4 +43,28 @@ input {
 }
 .details_link:hover {
   text-decoration: underline;
+}
+
+.Product_Card {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Product_Card img {
+  width: auto;
+  height: 200px;
+  border-radius: 4px;
+  float: left;
+}
+
+.Add_product_link {
+  color: #2196f3;
+  text-decoration: none;
+  display: block;
 }
