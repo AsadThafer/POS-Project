@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchCategory from "./fetchCategory";
+import Button from "./Button";
 
 const AddProductForm = () => {
   const navigate = useNavigate();
@@ -50,7 +51,7 @@ const AddProductForm = () => {
     <div className="details">
       <h2>Category Name : {category.name}</h2>
       <h3>Category ID : {category.id}</h3>
-      <button onClick={() => navigate("/")}>Back</button>
+      <Button onClick={() => navigate("/")}>Back</Button>
       <form onSubmit={confirmProductAdd}>
         <input name="name" placeholder="Product name" type="text" required />
         <input
@@ -72,7 +73,7 @@ const AddProductForm = () => {
           required
         />
         <input name="image" placeholder="Product image" type="text" required />
-        <button type="submit">Add Product</button>
+        <Button type="submit">Add Product</Button>
       </form>
     </div>
   );

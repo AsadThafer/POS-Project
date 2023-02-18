@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Button from "./Button";
 
 const ProductDetails = () => {
   const [name, setName] = useState("");
@@ -125,34 +126,34 @@ const ProductDetails = () => {
           Product last edit time :
           {product.createdTime ? product.createdTime.toString() : "No time"}
         </h3>
-        <button
-          className="update_button"
+        <Button
+          design="update"
           onClick={() => startInlineEdit(product.id)}
           style={{ display: isUpdating ? "none" : "block" }}
         >
           Update Product
-        </button>
-        <button
+        </Button>
+        <Button
           style={{ display: isUpdating ? "block" : "none" }}
-          className="confirm_button"
+          design="confirm"
           onClick={() => updateProduct(product.id)}
         >
           confirm Update
-        </button>
-        <button
-          className="cancel_button"
+        </Button>
+        <Button
+          design="cancel"
           onClick={() => cancelInlineEdit(product.id)}
           style={{ display: isUpdating ? "block" : "none" }}
         >
           cancel Update
-        </button>
-        <button
-          className="delete_button"
+        </Button>
+        <Button
+          design="delete"
           style={{ display: isUpdating ? "none" : "block" }}
           onClick={() => deleteProduct(product.id)}
         >
           Delete Product
-        </button>
+        </Button>
       </div>
       <Link to={`/`} className="details_link">
         Back to Home Page

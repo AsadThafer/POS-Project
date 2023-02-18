@@ -1,0 +1,25 @@
+button {
+  color: white;
+  background-color: #4caf50;
+  padding: 14px 20px;
+  margin: 8px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete {
+  background-color: #f44336;
+}
+
+.create {
+  background-color: #2196f3;
+}
+
+.update {
+  background-color: #ff9800;
+}
+
+.cancel {
+  background-color: gray;
+}

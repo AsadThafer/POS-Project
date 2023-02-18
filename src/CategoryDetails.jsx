@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchCategory from "./fetchCategory";
 import Products from "./Products";
 import { useState } from "react";
+import Button from "./Button";
 
 const CategoryDetails = () => {
   const [name, setName] = useState("");
@@ -82,34 +83,34 @@ const CategoryDetails = () => {
           onChange={(e) => setName(e.target.value)}
         ></input>
         <h3>Category Created Time :{category.createdTime.toString()}</h3>
-        <button
-          className="update_button"
+        <Button
+          design="update"
           onClick={() => startInlineEdit(category.id)}
           style={{ display: isUpdating ? "none" : "block" }}
         >
           Update Category
-        </button>
-        <button
+        </Button>
+        <Button
           style={{ display: isUpdating ? "block" : "none" }}
-          className="confirm_button"
+          design="confirm"
           onClick={() => updateCategory(category.id)}
         >
           confirm Update
-        </button>
-        <button
-          className="cancel_button"
+        </Button>
+        <Button
+          design="cancel"
           onClick={() => cancelInlineEdit(category.id)}
           style={{ display: isUpdating ? "block" : "none" }}
         >
           cancel Update
-        </button>
-        <button
-          className="delete_button"
+        </Button>
+        <Button
+          design="delete"
           style={{ display: isUpdating ? "none" : "block" }}
           onClick={() => deleteCategory(category.id)}
         >
           Delete Category
-        </button>
+        </Button>
         <Products id={category.id} />
         <Link
           className="Add_product_link"
@@ -119,7 +120,7 @@ const CategoryDetails = () => {
           Add Product{" "}
         </Link>
       </div>
-      <button onClick={() => navigate("/")}>Back</button>
+      <Button onClick={() => navigate("/")}>Back</Button>
     </>
   );
 };

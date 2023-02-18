@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 const Test = () => {
   const [newName, setNewName] = useState("");
@@ -49,9 +50,9 @@ const Test = () => {
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
       />
-      <button className="create_button" onClick={createCategory}>
-        create Category
-      </button>
+      <Button design="create" onClick={createCategory}>
+        Create Category
+      </Button>
       <h1>Cateogires</h1>
       {categories.map((category) => (
         <div className="category" key={category.id}>

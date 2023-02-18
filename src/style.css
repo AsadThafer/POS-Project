@@ -8,16 +8,6 @@ h1 {
   color: blueviolet;
 }
 
-button {
-  color: white;
-  background-color: #4caf50;
-  padding: 14px 20px;
-  margin: 8px 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
 input {
   padding: 12px 20px;
   margin: 8px 10px;
@@ -30,22 +20,6 @@ input {
 
 input:disabled {
   background-color: #f1f1f1;
-}
-
-.delete_button {
-  background-color: #f44336;
-}
-
-.create_button {
-  background-color: #2196f3;
-}
-
-.update_button {
-  background-color: #ff9800;
-}
-
-.cancel_button {
-  background-color: gray;
 }
 
 .details_link {
