@@ -1,36 +1,36 @@
 {
   "categories": [
     {
-      "name": "News",
-      "createdTime": "2023-02-18T11:40:23.506Z",
-      "id": 2
-    },
-    {
-      "name": "Cat34",
-      "createdTime": "2023-02-18T11:09:16.791Z",
+      "name": "Cat_1 up",
+      "createdTime": "2023-02-18T13:36:35.247Z",
       "id": 3
     },
     {
-      "name": "Cat1246",
-      "createdTime": "2023-02-18T11:58:36.816Z",
+      "name": "Cat_2 up",
+      "createdTime": "2023-02-18T13:36:52.052Z",
       "id": 4
-    },
-    {
-      "name": "Test3",
-      "createdTime": "2023-02-18T11:40:28.471Z",
-      "id": 5
     }
   ],
   "products": [
     {
-      "name": "T-shirt",
-      "price": "1125",
-      "quantity": "10",
-      "description": "23",
-      "image": "https://cdn.shopify.com/s/files/1/0066/1769/4275/products/whitelsmen_2048x2048.jpg?v=1629899502",
-      "createdTime": "2023-02-18T11:56:11.806Z",
-      "categoryId": "2",
-      "id": 3
+      "name": "T-Shirt",
+      "price": "100",
+      "quantity": "100",
+      "description": "T-shirt Test",
+      "image": "https://www.machinescreenprinters.com.au/wp-content/uploads/2021/10/alstyle_1301_gold.jpg",
+      "createdTime": "2023-02-18T13:36:59.314Z",
+      "categoryId": "4",
+      "id": 1
+    },
+    {
+      "name": "shirt",
+      "price": "23",
+      "quantity": "123",
+      "description": "T-shirt Test",
+      "image": "https://www.machinescreenprinters.com.au/wp-content/uploads/2021/10/alstyle_1301_gold.jpg",
+      "createdTime": "2023-02-18T13:31:17.652Z",
+      "categoryId": "3",
+      "id": 2
     }
   ]
 }

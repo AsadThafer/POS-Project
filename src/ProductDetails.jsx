@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 
 const ProductDetails = () => {
@@ -11,6 +11,19 @@ const ProductDetails = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      let uri = `http://localhost:3000/products/${id}`;
+      const response = await fetch(uri);
+      const data = await response.json();
+      setProduct(data);
+      console.log(data);
+    };
+    getProduct();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUpdating]);
 
   const startInlineEdit = () => {
     setIsUpdating(true);
@@ -57,6 +70,7 @@ const ProductDetails = () => {
       method: "DELETE",
     });
     if (response.ok) {
+      fetchProduct();
       return response.json();
     }
     throw new Error("Error deleting product");
@@ -69,6 +83,7 @@ const ProductDetails = () => {
     }
     throw new Error("Error fetching product");
   };
+
   const results = useQuery(["product", id], fetchProduct);
   if (results.isError) {
     return (
@@ -84,7 +99,7 @@ const ProductDetails = () => {
       </div>
     );
   }
-  const product = results.data;
+
   return (
     <>
       <div className="Product_Card" key={product.id}>
@@ -154,9 +169,16 @@ const ProductDetails = () => {
         >
           Delete Product
         </Button>
+        <h3>Product Category Id :{product.categoryId}</h3>
       </div>
       <Link to={`/`} className="details_link">
         Back to Home Page
+      </Link>
+      <Link
+        to={`/CategoryDetails/${product.categoryId}`}
+        className="details_link"
+      >
+        Back to Category
       </Link>
     </>
   );

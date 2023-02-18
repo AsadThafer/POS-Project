@@ -2,13 +2,26 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchCategory from "./fetchCategory";
 import Products from "./Products";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 
 const CategoryDetails = () => {
+  const [category, setCategory] = useState({});
   const [name, setName] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      let uri = `http://localhost:3000/categories/${id}`;
+      const response = await fetch(uri);
+      const data = await response.json();
+      setCategory(data);
+      console.log(data);
+    };
+    getProduct();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUpdating]);
 
   const startInlineEdit = () => {
     setIsUpdating(true);
@@ -69,7 +82,6 @@ const CategoryDetails = () => {
     );
   }
 
-  const category = results.data;
   return (
     <>
       <div className="details">
@@ -82,7 +94,10 @@ const CategoryDetails = () => {
           value={isUpdating ? name : category.name}
           onChange={(e) => setName(e.target.value)}
         ></input>
-        <h3>Category Created Time :{category.createdTime.toString()}</h3>
+        <h3>
+          Category Created Time :{" "}
+          {category.createdTime ? category.createdTime.toString() : "No time"}
+        </h3>
         <Button
           design="update"
           onClick={() => startInlineEdit(category.id)}
