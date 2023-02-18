@@ -1,10 +1,13 @@
 import { createRoot } from "react-dom/client";
 import CategoriesCRUD from "./CategoriesCRUD";
 import CategoryDetails from "./CategoryDetails";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AddProductForm from "./AddProductForm";
 import NotFound from "./NotFound.jsx";
+import ProductDetails from "./ProductDetails.jsx";
+import NavBar from "./NavBar.jsx";
+import ProductsMenu from "./ProductsMenu";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,11 +23,13 @@ const App = () => {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <header>
-            <Link to="/">Home</Link>
+            <NavBar />
           </header>
           <Routes>
             <Route path="/CategoryDetails/:id" element={<CategoryDetails />} />
             <Route path="/AddProductForm/:id" element={<AddProductForm />} />
+            <Route path="/ProductDetails/:id" element={<ProductDetails />} />
+            <Route path="/ProductsMenu" element={<ProductsMenu />} />
             <Route path="/" element={<CategoriesCRUD />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

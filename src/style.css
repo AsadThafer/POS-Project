@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0;
+}
+
 h1 {
   color: blueviolet;
 }
@@ -19,6 +25,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 input:disabled {
@@ -37,6 +44,10 @@ input:disabled {
   background-color: #ff9800;
 }
 
+.cancel_button {
+  background-color: gray;
+}
+
 .details_link {
   color: #2196f3;
   text-decoration: none;
@@ -46,25 +57,52 @@ input:disabled {
 }
 
 .Product_Card {
-  width: 300px;
-  height: 300px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 10px;
   margin: 10px;
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
 }
 
 .Product_Card img {
-  width: auto;
+  width: 200px;
   height: 200px;
-  border-radius: 4px;
-  float: left;
+  object-fit: contain;
 }
 
 .Add_product_link {
   color: #2196f3;
   text-decoration: none;
   display: block;
+}
+
+.Products_Menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.edit_input:disabled {
+  background-color: #f1f1f1;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  padding: 0 10px;
+  width: 240px;
+  background: none;
+}
+
+.category {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: auto;
+  justify-content: center;
 }

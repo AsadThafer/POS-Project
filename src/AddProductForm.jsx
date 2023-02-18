@@ -24,7 +24,7 @@ const AddProductForm = () => {
       },
     }).then((res) => {
       if (res.ok) {
-        navigate(`/categories/${id}`);
+        navigate(`/CategoryDetails/${id}`);
       }
     });
   };
