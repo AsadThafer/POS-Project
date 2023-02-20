@@ -9,6 +9,11 @@
       "name": "Cat_2 up",
       "createdTime": "2023-02-20T12:28:19.356Z",
       "id": 4
+    },
+    {
+      "name": "cat3tt",
+      "createdTime": "2023-02-20T13:58:25.422Z",
+      "id": 5
     }
   ],
   "products": [
@@ -41,6 +46,16 @@
       "categoryId": "4",
       "createdTime": "2023-02-20T12:48:23.916Z",
       "id": 3
+    },
+    {
+      "name": "Jeans",
+      "price": "100",
+      "quantity": "10",
+      "description": " pants or trousers made from denim or dungaree cloth",
+      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnymag.com%2Fstrategist%2Farticle%2Fbest-jeans-for-women-of-all-sizes-and-styles.html&psig=AOvVaw1v4gaOB0J6WPYiofP-q1Kl&ust=1676987918688000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCLiP4_qgpP0CFQAAAAAdAAAAABAK",
+      "categoryId": "3",
+      "createdTime": "2023-02-20T13:59:15.021Z",
+      "id": 4
     }
   ]
 }

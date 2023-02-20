@@ -89,7 +89,7 @@ const AddProductForm = () => {
       <h3>
         Category ID : {category.id ? category.id : "No specific category"}
       </h3>
-      <Button onClick={() => navigate("/")}>Back</Button>
+
       <form onSubmit={confirmProductAdd}>
         <input name="name" placeholder="Product name" type="text" required />
         <input
@@ -124,6 +124,7 @@ const AddProductForm = () => {
         </select>
         <Button type="submit">Add Product</Button>
       </form>
+      <Button onClick={() => navigate("/")}>Back</Button>
     </div>
   );
 };

@@ -101,12 +101,12 @@ const CategoryDetails = () => {
         <Button
           design="update"
           onClick={() => startInlineEdit(category.id)}
-          style={{ display: isUpdating ? "none" : "block" }}
+          style={{ display: isUpdating ? "none" : "inline" }}
         >
           Update Category
         </Button>
         <Button
-          style={{ display: isUpdating ? "block" : "none" }}
+          style={{ display: isUpdating ? "inline" : "none" }}
           design="confirm"
           onClick={() => updateCategory(category.id)}
         >
@@ -115,24 +115,24 @@ const CategoryDetails = () => {
         <Button
           design="cancel"
           onClick={() => cancelInlineEdit(category.id)}
-          style={{ display: isUpdating ? "block" : "none" }}
+          style={{ display: isUpdating ? "inline" : "none" }}
         >
           cancel Update
         </Button>
         <Button
           design="delete"
-          style={{ display: isUpdating ? "none" : "block" }}
+          style={{ display: isUpdating ? "none" : "inline" }}
           onClick={() => deleteCategory(category.id)}
         >
           Delete Category
         </Button>
-        <Products id={category.id} />
         <Link
           className="Add_product_link"
           to={`/AddProductForm/${category.id}`}
         >
           Add Product
         </Link>
+        <Products id={category.id} />
       </div>
       <Button onClick={() => navigate("/")}>Back</Button>
     </>
