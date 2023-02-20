@@ -2,8 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Button from "./Button";
-
+import Button from "./components/Button/Button";
 const ProductDetails = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -19,7 +18,6 @@ const ProductDetails = () => {
       const response = await fetch(uri);
       const data = await response.json();
       setProduct(data);
-      console.log(data);
     };
     getProduct();
     // eslint-disable-next-line react-hooks/exhaustive-deps

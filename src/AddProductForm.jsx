@@ -1,8 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchCategory from "./fetchCategory";
-import Button from "./Button";
+import Button from "./components/Button/Button";
 import fetchCategories from "./fetchCategories";
+import { useFormik } from "formik";
 
 const AddProductForm = () => {
   const navigate = useNavigate();
@@ -12,40 +13,83 @@ const AddProductForm = () => {
   const results = useQuery(["details", id], fetchCategory);
   const categories = useQuery(["categories"], fetchCategories);
 
-  const confirmProductAdd = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const data = new FormData(form);
-    const product = Object.fromEntries(data.entries());
-    product.createdTime = new Date();
-    console.log(product);
-    if (product.categoryId === id) {
-      fetch(`http://localhost:3000/categories/${id}/products`, {
-        method: "POST",
-        body: JSON.stringify(product),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => {
-        if (res.ok) {
-          navigate(`/CategoryDetails/${id}`);
-        }
-      });
+  const validate = (values) => {
+    const errors = {};
+    if (!values.name) {
+      errors.name = "Required";
+    } else if (values.name.length > 15) {
+      errors.name = "Must be 15 characters or less";
     }
-    if (product.categoryId !== id) {
-      fetch(`http://localhost:3000/categories/${product.categoryId}/products`, {
-        method: "POST",
-        body: JSON.stringify(product),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => {
-        if (res.ok) {
-          navigate(`/CategoryDetails/${product.categoryId}`);
-        }
-      });
+    if (!values.price) {
+      errors.price = "Required";
+    } else if (values.price.length > 15) {
+      errors.price = "Must be 15 characters or less";
     }
+    if (!values.description) {
+      errors.description = "Required";
+    } else if (values.description.length > 15) {
+      errors.description = "Must be 15 characters or less";
+    }
+    if (!values.quantity) {
+      errors.quantity = "Required";
+    } else if (values.quantity.length > 15) {
+      errors.quantity = "Must be 15 characters or less";
+    }
+    if (!values.image) {
+      errors.image = "Required";
+    }
+    if (!values.categoryId) {
+      errors.categoryId = "Required";
+    }
+
+    return errors;
   };
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      price: "",
+      description: "",
+      quantity: "",
+      image: "",
+      categoryId: id ? id : "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+      const product = values;
+      product.createdTime = new Date();
+      if (product.categoryId === id) {
+        fetch(`http://localhost:3000/categories/${id}/products`, {
+          method: "POST",
+          body: JSON.stringify(product),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((res) => {
+          if (res.ok) {
+            navigate(`/CategoryDetails/${id}`);
+          }
+        });
+      }
+      if (product.categoryId !== id) {
+        fetch(
+          `http://localhost:3000/categories/${product.categoryId}/products`,
+          {
+            method: "POST",
+            body: JSON.stringify(product),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        ).then((res) => {
+          if (res.ok) {
+            navigate(`/CategoryDetails/${product.categoryId}`);
+          }
+        });
+      }
+    },
+    validate,
+  });
 
   if (results.isError) {
     return (
@@ -80,7 +124,6 @@ const AddProductForm = () => {
 
   const category = results.data;
   const categoryList = categories.data;
-  console.log(categoryList);
   return (
     <div className="details">
       <h2>
@@ -90,38 +133,81 @@ const AddProductForm = () => {
         Category ID : {category.id ? category.id : "No specific category"}
       </h3>
 
-      <form onSubmit={confirmProductAdd}>
-        <input name="name" placeholder="Product name" type="text" required />
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="name">Product Name</label>
+        <input
+          name="name"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.name}
+          required
+        />
+        {formik.errors.name ? (
+          <div className="form-error">{formik.errors.name}</div>
+        ) : null}
+        <label htmlFor="price">Product Price</label>
         <input
           name="price"
-          placeholder="Product price"
           type="number"
+          onChange={formik.handleChange}
+          value={formik.values.price}
           required
         />
+        {formik.errors.price ? (
+          <div className="form-error">{formik.errors.price}</div>
+        ) : null}
+        <label htmlFor="quantity">Product Quantity</label>
         <input
           name="quantity"
-          placeholder="Product quantity"
           type="number"
+          onChange={formik.handleChange}
+          value={formik.values.quantity}
           required
         />
+        {formik.errors.quantity ? (
+          <div className="form-error">{formik.errors.quantity}</div>
+        ) : null}
+        <label htmlFor="description">Product Description</label>
         <input
           name="description"
-          placeholder="Product description"
           type="text"
+          onChange={formik.handleChange}
+          value={formik.values.description}
           required
         />
-        <input name="image" placeholder="Product image" type="text" required />
-        <select name="categoryId" id="categoryId">
+        {formik.errors.description ? (
+          <div className="form-error">{formik.errors.description}</div>
+        ) : null}
+        <label htmlFor="image">Product Image</label>
+        <input
+          name="image"
+          type="url"
+          onChange={formik.handleChange}
+          value={formik.values.image}
+          required
+        />
+        {formik.errors.image ? (
+          <div className="form-error">{formik.errors.image}</div>
+        ) : null}
+        <label htmlFor="categoryId">Product Category</label>
+        <select
+          name="categoryId"
+          id="categoryId"
+          required
+          onChange={formik.handleChange}
+          value={formik.values.categoryId}
+        >
+          <option value="">not selected yet</option>
           {categoryList.map((categoryelement) => (
-            <option
-              key={categoryelement.id}
-              value={categoryelement.id}
-              selected={categoryelement.id === category.id ? true : false}
-            >
+            <option key={categoryelement.id} value={categoryelement.id}>
               {categoryelement.name}
             </option>
           ))}
         </select>
+        {formik.errors.categoryId ? (
+          <div className="form-error">{formik.errors.categoryId}</div>
+        ) : null}
+
         <Button type="submit">Add Product</Button>
       </form>
       <Button onClick={() => navigate("/")}>Back</Button>

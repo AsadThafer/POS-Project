@@ -48,14 +48,14 @@
       "id": 3
     },
     {
-      "name": "Jeans",
-      "price": "100",
-      "quantity": "10",
-      "description": " pants or trousers made from denim or dungaree cloth",
-      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fnymag.com%2Fstrategist%2Farticle%2Fbest-jeans-for-women-of-all-sizes-and-styles.html&psig=AOvVaw1v4gaOB0J6WPYiofP-q1Kl&ust=1676987918688000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCLiP4_qgpP0CFQAAAAAdAAAAABAK",
+      "name": "asad",
+      "price": 11,
+      "description": "Test",
+      "quantity": 11,
+      "image": "https://www.machinescreenprinters.com.au/wp-content/uploads/2021/10/alstyle_1301_gold.jpg",
       "categoryId": "3",
-      "createdTime": "2023-02-20T13:59:15.021Z",
-      "id": 4
+      "createdTime": "2023-02-20T15:18:53.636Z",
+      "id": 5
     }
   ]
 }

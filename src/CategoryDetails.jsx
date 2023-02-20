@@ -3,8 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchCategory from "./fetchCategory";
 import Products from "./Products";
 import { useState, useEffect } from "react";
-import Button from "./Button";
-
+import Button from "./components/Button/Button";
 const CategoryDetails = () => {
   const [category, setCategory] = useState({});
   const [name, setName] = useState("");

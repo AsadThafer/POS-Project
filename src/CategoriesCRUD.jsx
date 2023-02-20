@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Button from "./Button";
-
+import Button from "./components/Button/Button";
 const Test = () => {
   const [newName, setNewName] = useState("");
   const [categories, setCategories] = useState([]);
