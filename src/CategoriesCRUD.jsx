@@ -54,16 +54,21 @@ const Test = () => {
         Create Category
       </Button>
       <h1>Cateogires</h1>
-      {categories.map((category) => (
-        <div className="category" key={category.id}>
-          <h2>{category.name}</h2>
-          <h3>{category.createdTime.toString()}</h3>
+      <div className="categories">
+        {categories.map((category) => (
+          <div className="category" key={category.id}>
+            <h2>{category.name}</h2>
+            <h3>{category.createdTime.toString()}</h3>
 
-          <Link className="details_link" to={`/CategoryDetails/${category.id}`}>
-            Details
-          </Link>
-        </div>
-      ))}
+            <Link
+              className="details_link"
+              to={`/CategoryDetails/${category.id}`}
+            >
+              Details
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

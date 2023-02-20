@@ -131,8 +131,7 @@ const CategoryDetails = () => {
           className="Add_product_link"
           to={`/AddProductForm/${category.id}`}
         >
-          {" "}
-          Add Product{" "}
+          Add Product
         </Link>
       </div>
       <Button onClick={() => navigate("/")}>Back</Button>

@@ -1,7 +1,17 @@
 import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
+import { Link } from "react-router-dom";
+import ProductsSearch from "./ProductsSearch";
+import { useQuery } from "@tanstack/react-query";
+import fetchCategories from "./fetchCategories";
+
 const ProductsMenu = () => {
   const [products, setProducts] = useState([]); // [state, setState]
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState(products); // [state, setState]
+  const [categoryFilter, setCategoryFilter] = useState("");
+
+  const categories = useQuery(["categories"], fetchCategories);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -9,15 +19,81 @@ const ProductsMenu = () => {
       const response = await fetch(uri);
       const data = await response.json();
       setProducts(data);
+      setFilteredProducts(data);
     };
     getProducts();
   }, []);
+
+  const onSearchTermChange = (searchTerm) => {
+    setSearchTerm(searchTerm);
+    setFilteredProducts(
+      products.filter((product) =>
+        product.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  };
+
+  const onCategoryFilterChange = (categoryFilter) => {
+    setCategoryFilter(categoryFilter);
+    setFilteredProducts(
+      products.filter((product) => product.categoryId === categoryFilter)
+    );
+    if (categoryFilter === "") {
+      setFilteredProducts(products);
+    }
+  };
+
+  if (categories.isLoading)
+    return (
+      <div className="loading-pane">
+        {" "}
+        <h2 className="loader">↻</h2>{" "}
+      </div>
+    );
+  if (categories.isError)
+    return (
+      <div className="error-pane">
+        {" "}
+        <h2>There was an error. Please try again.</h2>{" "}
+      </div>
+    );
+
+  const categoryList = categories.data;
+
   return (
-    <div className="Products_Menu">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <>
+      <>
+        <label className="Category_filter_label" htmlFor="category">
+          Filter by Category{" "}
+        </label>
+        <select
+          id="category"
+          name="category"
+          value={categoryFilter}
+          onChange={(event) => onCategoryFilterChange(event.target.value)}
+        >
+          <option value="">All</option>
+          {categoryList.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </>
+      <ProductsSearch
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        onSearchTermChange={onSearchTermChange}
+      />
+      <Link className="Add_product_link" to={`/AddProductForm/`}>
+        Add Product
+      </Link>
+      <div className="Products_Menu">
+        {filteredProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </>
   );
 };
 

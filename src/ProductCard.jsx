@@ -11,6 +11,7 @@ const ProductCard = ({ product }) => {
     }
     throw new Error("Error deleting product");
   };
+
   return (
     <div className="Product_Card" key={product.id}>
       <img className="Product_image" src={product.image} alt={product.name} />

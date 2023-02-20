@@ -51,7 +51,6 @@ input:disabled {
 .Add_product_link {
   color: #2196f3;
   text-decoration: none;
-  display: block;
 }
 
 .Products_Menu {
@@ -79,4 +78,24 @@ input:disabled {
   flex-wrap: wrap;
   width: auto;
   justify-content: center;
+}
+
+select {
+  padding: 12px 20px;
+  margin: 8px 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  text-align: center;
+}
+option {
+  text-align: center;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
 }
