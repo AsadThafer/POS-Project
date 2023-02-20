@@ -37,6 +37,8 @@ const AddProductForm = () => {
     }
     if (!values.image) {
       errors.image = "Required";
+    } else if (values.image.length < 10) {
+      errors.image = "image must be a link";
     }
     if (!values.categoryId) {
       errors.categoryId = "Required";
@@ -126,12 +128,17 @@ const AddProductForm = () => {
   const categoryList = categories.data;
   return (
     <div className="details">
-      <h2>
-        Category Name : {category.name ? category.name : "No specific category"}
-      </h2>
-      <h3>
-        Category ID : {category.id ? category.id : "No specific category"}
-      </h3>
+      {id ? (
+        <>
+          <h2>
+            Category Name :{" "}
+            {category.name ? category.name : "No specific category"}
+          </h2>
+          <h3>
+            Category ID : {category.id ? category.id : "No specific category"}
+          </h3>
+        </>
+      ) : null}
 
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="name">Product Name</label>
@@ -139,10 +146,11 @@ const AddProductForm = () => {
           name="name"
           type="text"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.name}
           required
         />
-        {formik.errors.name ? (
+        {formik.touched.name && formik.errors.name ? (
           <div className="form-error">{formik.errors.name}</div>
         ) : null}
         <label htmlFor="price">Product Price</label>
@@ -150,10 +158,11 @@ const AddProductForm = () => {
           name="price"
           type="number"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.price}
           required
         />
-        {formik.errors.price ? (
+        {formik.touched.price && formik.errors.price ? (
           <div className="form-error">{formik.errors.price}</div>
         ) : null}
         <label htmlFor="quantity">Product Quantity</label>
@@ -161,10 +170,11 @@ const AddProductForm = () => {
           name="quantity"
           type="number"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.quantity}
           required
         />
-        {formik.errors.quantity ? (
+        {formik.touched.quantity && formik.errors.quantity ? (
           <div className="form-error">{formik.errors.quantity}</div>
         ) : null}
         <label htmlFor="description">Product Description</label>
@@ -172,10 +182,11 @@ const AddProductForm = () => {
           name="description"
           type="text"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.description}
           required
         />
-        {formik.errors.description ? (
+        {formik.touched.description && formik.errors.description ? (
           <div className="form-error">{formik.errors.description}</div>
         ) : null}
         <label htmlFor="image">Product Image</label>
@@ -184,9 +195,10 @@ const AddProductForm = () => {
           type="url"
           onChange={formik.handleChange}
           value={formik.values.image}
+          onBlur={formik.handleBlur}
           required
         />
-        {formik.errors.image ? (
+        {formik.touched.image && formik.errors.image ? (
           <div className="form-error">{formik.errors.image}</div>
         ) : null}
         <label htmlFor="categoryId">Product Category</label>
@@ -195,6 +207,7 @@ const AddProductForm = () => {
           id="categoryId"
           required
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.categoryId}
         >
           <option value="">not selected yet</option>
@@ -204,7 +217,7 @@ const AddProductForm = () => {
             </option>
           ))}
         </select>
-        {formik.errors.categoryId ? (
+        {formik.touched.categoryId && formik.errors.categoryId ? (
           <div className="form-error">{formik.errors.categoryId}</div>
         ) : null}
 
