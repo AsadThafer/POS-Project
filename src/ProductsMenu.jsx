@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 import fetchCategories from "./fetchCategories";
+import { ConfirmProvider } from "material-ui-confirm";
+import Deleteconfirm from "./Deleteconfirm";
 
 const ProductsMenu = () => {
   const [products, setProducts] = useState([]); // [state, setState]
@@ -80,6 +82,9 @@ const ProductsMenu = () => {
           ))}
         </select>
       </>
+      <ConfirmProvider>
+        <Deleteconfirm></Deleteconfirm>
+      </ConfirmProvider>
       <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
