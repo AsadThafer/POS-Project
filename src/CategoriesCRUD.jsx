@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "./components/Button/Button";
+import SearchBar from "./components/SearchBar/SearchBar";
 const Test = () => {
   const [newName, setNewName] = useState("");
   const [categories, setCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredCategories, setFilteredCategories] = useState(categories); // [state, setState]
 
   const createCategory = async () => {
     if (newName === "") {
@@ -36,9 +39,19 @@ const Test = () => {
       const response = await fetch(uri);
       const data = await response.json();
       setCategories(data);
+      setFilteredCategories(data);
     };
     getCategories();
   }, []);
+
+  const onSearchTermChange = (searchTerm) => {
+    setSearchTerm(searchTerm);
+    setFilteredCategories(
+      categories.filter((category) =>
+        category.name.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
+  };
 
   return (
     <div>
@@ -53,12 +66,15 @@ const Test = () => {
         Create Category
       </Button>
       <h1>Cateogires</h1>
+      <SearchBar
+        searchTerm={searchTerm}
+        onSearchTermChange={onSearchTermChange}
+        searchType="category"
+      />
       <div className="categories">
-        {categories.map((category) => (
+        {filteredCategories.map((category) => (
           <div className="category" key={category.id}>
             <h2>{category.name}</h2>
-            <h3>{category.createdTime.toString()}</h3>
-
             <Link
               className="details_link"
               to={`/CategoryDetails/${category.id}`}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
-import ProductsSearch from "./ProductsSearch";
+import SearchBar from "./components/SearchBar/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 import fetchCategories from "./fetchCategories";
 
@@ -80,10 +80,11 @@ const ProductsMenu = () => {
           ))}
         </select>
       </>
-      <ProductsSearch
+      <SearchBar
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         onSearchTermChange={onSearchTermChange}
+        searchType={"product"}
       />
       <Link className="Add_product_link" to={`/AddProductForm/`}>
         Add Product
