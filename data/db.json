@@ -14,6 +14,11 @@
       "name": "cat3tt",
       "createdTime": "2023-02-20T13:58:25.422Z",
       "id": 5
+    },
+    {
+      "name": "SeaFood",
+      "createdTime": "2023-02-21T11:37:47.774Z",
+      "id": 6
     }
   ],
   "products": [
@@ -46,6 +51,16 @@
       "categoryId": "4",
       "createdTime": "2023-02-20T12:48:23.916Z",
       "id": 3
+    },
+    {
+      "name": "Fish",
+      "price": 100,
+      "description": "Delicious fish",
+      "quantity": 100,
+      "image": "https://www.englishclub.com/images/vocabulary/food/fish-seafood/fish-seafood.jpg",
+      "categoryId": "6",
+      "createdTime": "2023-02-21T11:38:35.021Z",
+      "id": 4
     }
   ]
 }

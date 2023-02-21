@@ -19,11 +19,6 @@ const ProductCard = ({ product }) => {
       <h3>Product Price : {product.price}</h3>
       <h3>Product Quantity : {product.quantity}</h3>
       <h3>Product Description : {product.description}</h3>
-
-      <h3>
-        Product last updated :
-        {product.createdTime ? product.createdTime.toString() : "No time"}
-      </h3>
       <Link className="details_link" to={`/ProductDetails/${product.id}`}>
         Product Details
       </Link>

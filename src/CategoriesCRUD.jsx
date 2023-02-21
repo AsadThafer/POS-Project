@@ -27,6 +27,7 @@ const Test = () => {
       const response = await fetch("http://localhost:3000/categories");
       const data = await response.json();
       setCategories(data);
+      setFilteredCategories(data);
     };
 
     createPost();
@@ -55,8 +56,8 @@ const Test = () => {
 
   return (
     <div>
+      <label htmlFor="categoryName">Category Name</label>
       <input
-        placeholder="Category name"
         type="text"
         required
         value={newName}

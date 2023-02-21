@@ -120,3 +120,21 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+.loader {
+  font-size: 100px;
+  animation: spin 1s linear infinite;
+}
+
+.loading-pane {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  padding: 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

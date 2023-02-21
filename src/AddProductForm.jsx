@@ -105,6 +105,7 @@ const AddProductForm = () => {
     return (
       <div className="loading-pane">
         <h2 className="loader">↻</h2>
+        <h3>Loading.....</h3>
       </div>
     );
   }
