@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
+import DeleteDialog from "./components/DeleteDialog/DeleteDialog";
 const ProductDetails = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -165,13 +166,10 @@ const ProductDetails = () => {
           >
             cancel Update
           </Button>
-          <Button
-            design="delete"
-            style={{ display: isUpdating ? "none" : "block" }}
+          <DeleteDialog
+            id={product.id}
             onClick={() => deleteProduct(product.id)}
-          >
-            Delete Product
-          </Button>
+          />
           <h3>Product Category Id :{product.categoryId}</h3>
         </div>
         <Button design={"back"} onClick={() => navigate("/")}>
