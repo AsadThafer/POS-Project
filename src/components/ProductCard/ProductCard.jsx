@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import DeleteDialog from "./components/DeleteDialog/DeleteDialog";
+import DeleteDialog from "../DeleteDialog/DeleteDialog";
 import { useNavigate } from "react-router-dom";
+import "./ProductCard.css";
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const deleteProduct = async (id) => {

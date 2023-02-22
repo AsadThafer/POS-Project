@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ProductCard from "../../ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import "./Table.css";
 
 const Table = ({ data, itemsPerPage }) => {

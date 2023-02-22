@@ -12,7 +12,6 @@ th,
 td {
   text-align: left;
   padding: 12px;
-  width: calc(100% / 3);
   box-sizing: border-box;
   padding: 12px;
   border: 1px solid #ddd;
@@ -42,6 +41,7 @@ td:nth-child(even) {
 
 .pagination li {
   margin: 0 4px;
+  padding: 0px;
 }
 
 .pagination button {
@@ -70,18 +70,53 @@ td:last-child {
   margin-right: 0;
 }
 
-@media (max-width: 600px) {
-  table {
-    width: 100%;
-    max-width: none;
+.itemsPerPage {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 767px) {
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
   }
 
   td {
-    width: auto;
-    margin: 0;
+    display: block;
+    font-weight: bold;
+    text-align: center;
   }
-}
 
-.itemsPerPage {
-  text-align: center;
+  td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  td:last-child {
+    margin-top: 10px;
+  }
 }
