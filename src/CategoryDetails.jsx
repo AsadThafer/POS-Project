@@ -4,6 +4,7 @@ import fetchCategory from "./fetchCategory";
 import Products from "./Products";
 import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
+import DeleteDialog from "./components/DeleteDialog/DeleteDialog";
 const CategoryDetails = () => {
   const [category, setCategory] = useState({});
   const [name, setName] = useState("");
@@ -119,13 +120,10 @@ const CategoryDetails = () => {
         >
           cancel Update
         </Button>
-        <Button
-          design="delete"
-          style={{ display: isUpdating ? "none" : "inline" }}
-          onClick={() => deleteCategory(category.id)}
-        >
-          Delete Category
-        </Button>
+        <DeleteDialog
+          id={category.id}
+          onConfirm={() => deleteCategory(category.id)}
+        />
         <Link
           className="Add_product_link"
           to={`/AddProductForm/${category.id}`}
