@@ -57,7 +57,6 @@ const AddProductForm = () => {
       categoryId: id ? id : "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       const product = values;
       product.createdTime = new Date();
       if (product.categoryId === id) {
@@ -224,7 +223,9 @@ const AddProductForm = () => {
 
         <Button type="submit">Add Product</Button>
       </form>
-      <Button onClick={() => navigate("/")}>Back</Button>
+      <Button design={"back"} onClick={() => navigate("/")}>
+        Back Home
+      </Button>
     </div>
   );
 };

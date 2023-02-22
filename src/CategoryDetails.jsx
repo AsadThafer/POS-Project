@@ -132,7 +132,9 @@ const CategoryDetails = () => {
         </Link>
         <Products id={category.id} />
       </div>
-      <Button onClick={() => navigate("/")}>Back</Button>
+      <Button design={"back"} onClick={() => navigate("/")}>
+        Back Home
+      </Button>
     </>
   );
 };

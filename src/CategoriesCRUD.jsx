@@ -66,7 +66,6 @@ const Test = () => {
       <Button design="create" onClick={createCategory}>
         Create Category
       </Button>
-      <h1>Cateogires</h1>
       <SearchBar
         searchTerm={searchTerm}
         onSearchTermChange={onSearchTermChange}
