@@ -30,3 +30,18 @@
     width: 100%;
   }
 }
+
+.Product_Price {
+  font-weight: bold;
+  color: #2196f3;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.Products_Menu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+}

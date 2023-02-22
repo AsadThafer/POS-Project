@@ -72,7 +72,7 @@ const Test = () => {
         onSearchTermChange={onSearchTermChange}
         searchType="category"
       />
-      <CategoriesTable data={filteredCategories} itemsPerPage={12} />
+      <CategoriesTable data={filteredCategories} />
     </div>
   );
 };

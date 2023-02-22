@@ -2,8 +2,10 @@ import { useState } from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import "../Table/Table.css";
 
-const CategoriesTable = ({ data, itemsPerPage }) => {
+const CategoriesTable = ({ data }) => {
+  const [itemsPerPage, setItemsPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
+
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const totalItems = data.length;
 
@@ -41,6 +43,20 @@ const CategoriesTable = ({ data, itemsPerPage }) => {
     return pages;
   };
 
+  const handleItemsPerPageChange = (event) => {
+    const newItemsPerPage = Number(event.target.value);
+    setItemsPerPage(newItemsPerPage);
+  };
+
+  const renderItemsPerPageOptions = () => {
+    const options = [6, 12, 18];
+    return options.map((option) => (
+      <option key={option} value={option}>
+        {option}
+      </option>
+    ));
+  };
+
   return (
     <div>
       <table>
@@ -53,14 +69,19 @@ const CategoriesTable = ({ data, itemsPerPage }) => {
         <tfoot>
           <tr>
             <td colSpan={3} className="itemsPerPage">
-              {" "}
-              items Per Page : {itemsPerPage}
+              <label htmlFor="itemsPerPage">Items per page:</label>
+              <select
+                id="itemsPerPage"
+                value={itemsPerPage}
+                onChange={handleItemsPerPageChange}
+              >
+                {renderItemsPerPageOptions()}
+              </select>
             </td>
           </tr>
           <tr>
             <td colSpan={3} className="itemsPerPage">
-              {" "}
-              Total Items : {totalItems}
+              Total Displayed Items : {totalItems}
             </td>
           </tr>
         </tfoot>

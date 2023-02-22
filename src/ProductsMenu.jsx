@@ -65,7 +65,7 @@ const ProductsMenu = () => {
       <div className="searchFilter">
         <div className="CategoryFilter">
           <label className="Category_filter_label" htmlFor="category">
-            Filter by Category{" "}
+            Filter by Category
           </label>
           <select
             id="category"
@@ -91,7 +91,7 @@ const ProductsMenu = () => {
       <Link className="Add_product_link" to={`/AddProductForm/`}>
         Add Product
       </Link>
-      <Table data={filteredProducts} itemsPerPage={12} />
+      <Table data={filteredProducts} />
     </>
   );
 };
