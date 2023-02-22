@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Button from "./components/Button/Button";
 import SearchBar from "./components/SearchBar/SearchBar";
+import CategoriesTable from "./components/CategoriesTable/CategoriesTable";
 const Test = () => {
   const [newName, setNewName] = useState("");
   const [categories, setCategories] = useState([]);
@@ -72,19 +72,7 @@ const Test = () => {
         onSearchTermChange={onSearchTermChange}
         searchType="category"
       />
-      <div className="categories">
-        {filteredCategories.map((category) => (
-          <div className="category" key={category.id}>
-            <h2>{category.name}</h2>
-            <Link
-              className="details_link"
-              to={`/CategoryDetails/${category.id}`}
-            >
-              Details
-            </Link>
-          </div>
-        ))}
-      </div>
+      <CategoriesTable data={filteredCategories} itemsPerPage={12} />
     </div>
   );
 };
