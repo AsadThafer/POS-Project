@@ -13,19 +13,18 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="Product_Card" key={product.id}>
-      <img className="Product_image" src={product.image} alt={product.name} />
       <h3>Product ID : {product.id}</h3>
-      <h2>Product Name : {product.name}</h2>
-      <h3>Product Price : {product.price}</h3>
-      <h3>Product Quantity : {product.quantity}</h3>
-      <h3>Product Description : {product.description}</h3>
+      <img className="Product_image" src={product.image} alt={product.name} />
       <Link className="details_link" to={`/ProductDetails/${product.id}`}>
-        Product Details
+        {product.name}
       </Link>
+      <h3>Product Code : {product.code}</h3>
+      <h3>Product Description : {product.description}</h3>
+      <h3>Product Price : {product.price} $</h3>
       <Button design="delete" onClick={() => deleteProduct(product.id)}>
         Delete Product
       </Button>
-      <h3> Category Id : {product.categoryId}</h3>
+      <span> Category Id : {product.categoryId}</span>
     </div>
   );
 };

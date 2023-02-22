@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import ProductCard from "./ProductCard";
 import { Link } from "react-router-dom";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 import fetchCategories from "./fetchCategories";
+import Table from "./components/Table/Table";
 
 const ProductsMenu = () => {
   const [products, setProducts] = useState([]); // [state, setState]
@@ -62,38 +62,36 @@ const ProductsMenu = () => {
 
   return (
     <>
-      <>
-        <label className="Category_filter_label" htmlFor="category">
-          Filter by Category{" "}
-        </label>
-        <select
-          id="category"
-          name="category"
-          value={categoryFilter}
-          onChange={(event) => onCategoryFilterChange(event.target.value)}
-        >
-          <option value="">All</option>
-          {categoryList.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </>
-      <SearchBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        onSearchTermChange={onSearchTermChange}
-        searchType={"product"}
-      />
+      <div className="searchFilter">
+        <div className="CategoryFilter">
+          <label className="Category_filter_label" htmlFor="category">
+            Filter by Category{" "}
+          </label>
+          <select
+            id="category"
+            name="category"
+            value={categoryFilter}
+            onChange={(event) => onCategoryFilterChange(event.target.value)}
+          >
+            <option value="">All</option>
+            {categoryList.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          onSearchTermChange={onSearchTermChange}
+          searchType={"product"}
+        />
+      </div>
       <Link className="Add_product_link" to={`/AddProductForm/`}>
         Add Product
       </Link>
-      <div className="Products_Menu">
-        {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+      <Table data={filteredProducts} itemsPerPage={12} />
     </>
   );
 };

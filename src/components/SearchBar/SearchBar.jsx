@@ -5,20 +5,22 @@ const SearchBar = ({ searchTerm, onSearchTermChange, searchType }) => {
   };
 
   return (
-    <div className="SearchBar">
-      <label className="SearchLabel" htmlFor="search">
-        Search for a {searchType}
-      </label>
+    <>
+      <div className="SearchBar">
+        <label className="SearchLabel" htmlFor="search">
+          Search for a {searchType}
+        </label>
 
-      <input
-        className="SearchInput"
-        id="search"
-        name="search"
-        type="text"
-        value={searchTerm}
-        onChange={handleSearchTermChange}
-      />
-    </div>
+        <input
+          className="SearchInput"
+          id="search"
+          name="search"
+          type="text"
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+        />
+      </div>
+    </>
   );
 };
 

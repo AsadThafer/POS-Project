@@ -30,10 +30,10 @@ const AddProductForm = () => {
     } else if (values.description.length > 15) {
       errors.description = "Must be 15 characters or less";
     }
-    if (!values.quantity) {
-      errors.quantity = "Required";
-    } else if (values.quantity.length > 15) {
-      errors.quantity = "Must be 15 characters or less";
+    if (!values.code) {
+      errors.code = "Required";
+    } else if (values.code.length > 15) {
+      errors.code = "Must be 15 characters or less";
     }
     if (!values.image) {
       errors.image = "Required";
@@ -52,7 +52,7 @@ const AddProductForm = () => {
       name: "",
       price: "",
       description: "",
-      quantity: "",
+      code: "",
       image: "",
       categoryId: id ? id : "",
     },
@@ -166,17 +166,17 @@ const AddProductForm = () => {
         {formik.touched.price && formik.errors.price ? (
           <div className="form-error">{formik.errors.price}</div>
         ) : null}
-        <label htmlFor="quantity">Product Quantity</label>
+        <label htmlFor="code">Product Code</label>
         <input
-          name="quantity"
+          name="code"
           type="number"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.quantity}
+          value={formik.values.code}
           required
         />
-        {formik.touched.quantity && formik.errors.quantity ? (
-          <div className="form-error">{formik.errors.quantity}</div>
+        {formik.touched.code && formik.errors.code ? (
+          <div className="form-error">{formik.errors.code}</div>
         ) : null}
         <label htmlFor="description">Product Description</label>
         <input

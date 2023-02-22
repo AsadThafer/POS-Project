@@ -6,7 +6,7 @@ import Button from "./components/Button/Button";
 const ProductDetails = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [code, setCode] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
@@ -27,7 +27,7 @@ const ProductDetails = () => {
     setIsUpdating(true);
     setName(product.name);
     setPrice(product.price);
-    setQuantity(product.quantity);
+    setCode(product.code);
     setDescription(product.description);
     setImage(product.image);
   };
@@ -36,7 +36,7 @@ const ProductDetails = () => {
     setIsUpdating(false);
     setName("");
     setPrice("");
-    setQuantity("");
+    setCode("");
     setDescription("");
     setImage("");
   };
@@ -50,7 +50,7 @@ const ProductDetails = () => {
       body: JSON.stringify({
         name,
         price,
-        quantity,
+        code,
         description,
         image,
         createdTime: new Date(),
@@ -119,13 +119,13 @@ const ProductDetails = () => {
           value={isUpdating ? price : product.price}
           onChange={(e) => setPrice(e.target.value)}
         ></input>
-        <h3>Product Quantity :</h3>
+        <h3>Product Code :</h3>
         <input
           type="text"
           className="edit_input"
           disabled={isUpdating ? false : true}
-          value={isUpdating ? quantity : product.quantity}
-          onChange={(e) => setQuantity(e.target.value)}
+          value={isUpdating ? code : product.code}
+          onChange={(e) => setCode(e.target.value)}
         ></input>
         <h3>Product Description :</h3>
         <input

@@ -94,10 +94,10 @@ const CategoryDetails = () => {
           value={isUpdating ? name : category.name}
           onChange={(e) => setName(e.target.value)}
         ></input>
-        <h3>
-          Category Created Time :{" "}
+        <p>
+          Category Last edit Time :{" "}
           {category.createdTime ? category.createdTime.toString() : "No time"}
-        </h3>
+        </p>
         <Button
           design="update"
           onClick={() => startInlineEdit(category.id)}
