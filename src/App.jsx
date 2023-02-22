@@ -4,7 +4,7 @@ import CategoryDetails from "./CategoryDetails";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AddProductForm from "./AddProductForm";
-import NotFound from "./NotFound.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
 import ProductDetails from "./ProductDetails.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import ProductsMenu from "./ProductsMenu";
