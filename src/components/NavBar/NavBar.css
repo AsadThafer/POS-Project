@@ -48,6 +48,9 @@ h2 .nav-link {
   text-shadow: 2px 2px blue;
 }
 
+.nav-link.logout {
+  color: red;
+}
 @media screen and (max-width: 768px) {
   .logo {
     display: none;
