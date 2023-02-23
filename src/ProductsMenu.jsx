@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import SearchBar from "./components/SearchBar/SearchBar";
 import { useQuery } from "@tanstack/react-query";
 import fetchCategories from "./fetchCategories";
@@ -62,7 +61,13 @@ const ProductsMenu = () => {
 
   return (
     <>
-      <div className="searchFilter">
+      <Table data={filteredProducts}>
+        <SearchBar
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          onSearchTermChange={onSearchTermChange}
+          searchType={"product"}
+        />
         <div className="CategoryFilter">
           <label className="Category_filter_label" htmlFor="category">
             Filter by Category
@@ -81,17 +86,7 @@ const ProductsMenu = () => {
             ))}
           </select>
         </div>
-        <SearchBar
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          onSearchTermChange={onSearchTermChange}
-          searchType={"product"}
-        />
-      </div>
-      <Link className="Add_product_link" to={`/AddProductForm/`}>
-        Add Product
-      </Link>
-      <Table data={filteredProducts} />
+      </Table>
     </>
   );
 };

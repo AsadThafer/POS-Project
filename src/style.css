@@ -128,13 +128,6 @@ form {
   text-align: center;
 }
 
-.searchFilter {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: space-evenly;
-}
-
 @media screen and (max-width: 767px) {
   .searchFilter {
     flex-direction: column;

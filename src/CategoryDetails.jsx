@@ -5,6 +5,7 @@ import Products from "./Products";
 import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
 import DeleteDialog from "./components/DeleteDialog/DeleteDialog";
+import NotFound from "./components/NotFound/NotFound";
 const CategoryDetails = () => {
   const [category, setCategory] = useState({});
   const [name, setName] = useState("");
@@ -67,18 +68,13 @@ const CategoryDetails = () => {
   const results = useQuery(["details", id], fetchCategory);
 
   if (results.isError) {
-    return (
-      <div className="error-pane">
-        <h2>There was an error. Please try again.</h2>
-      </div>
-    );
+    return <NotFound />;
   }
 
   if (results.isLoading) {
     return (
       <div className="loading-pane">
         <h2 className="loader">↻</h2>
-        <h3>Loading.....</h3>
       </div>
     );
   }

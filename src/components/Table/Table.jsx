@@ -1,8 +1,9 @@
 import { useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Table.css";
+import { Link } from "react-router-dom";
 
-const Table = ({ data }) => {
+const Table = ({ data, children }) => {
   const [itemsPerPage, setItemsPerPage] = useState(6);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,13 +63,22 @@ const Table = ({ data }) => {
       <table>
         <thead>
           <tr>
-            <th colSpan={3}>Products</th>
+            <th colSpan={2}>Products</th>
+            <th colSpan={1}>
+              <Link className="Add_product_link" to={`/AddProductForm/`}>
+                Add Product
+              </Link>
+            </th>
+          </tr>
+          <tr>
+            <td className="searchFilter" colSpan={3}>
+              {children}
+            </td>
           </tr>
         </thead>
+
         <tbody>{renderTableData()}</tbody>
         <tfoot>
-          <tr></tr>
-
           <tr>
             <td colSpan={3} className="itemsPerPage">
               <label htmlFor="itemsPerPage">Items per page:</label>

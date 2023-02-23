@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound/NotFound.jsx";
 import ProductDetails from "./ProductDetails.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import ProductsMenu from "./ProductsMenu";
+import PosPage from "./PosPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,7 +32,8 @@ const App = () => {
             <Route path="/AddProductForm/" element={<AddProductForm />} />
             <Route path="/ProductDetails/:id" element={<ProductDetails />} />
             <Route path="/ProductsMenu" element={<ProductsMenu />} />
-            <Route path="/" element={<CategoriesCRUD />} />
+            <Route path="/CategoriesCRUD" element={<CategoriesCRUD />} />
+            <Route path="/" element={<PosPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </QueryClientProvider>

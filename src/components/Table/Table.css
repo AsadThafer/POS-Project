@@ -92,10 +92,6 @@ th {
 }
 
 @media screen and (max-width: 767px) {
-  thead {
-    display: none;
-  }
-
   tbody tr {
     display: block;
     margin-bottom: 20px;

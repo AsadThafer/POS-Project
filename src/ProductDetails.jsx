@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
 import DeleteDialog from "./components/DeleteDialog/DeleteDialog";
+import NotFound from "./components/NotFound/NotFound";
 const ProductDetails = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -85,11 +86,7 @@ const ProductDetails = () => {
 
   const results = useQuery(["product", id], fetchProduct);
   if (results.isError) {
-    return (
-      <div className="error-pane">
-        <h2>There was an error. Please try again.</h2>
-      </div>
-    );
+    return <NotFound />;
   }
   if (results.isLoading) {
     return (
