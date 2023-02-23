@@ -1,6 +1,16 @@
+import authentication from "../../Login/authentication";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const NavBar = () => {
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    window.location.reload();
+    navigate("/");
+  };
   return (
     <header className="navigation">
       <div className="container">
@@ -29,6 +39,13 @@ const NavBar = () => {
                 Orders
               </Link>
             </li>
+            {authentication() ? (
+              <li>
+                <Link className="nav-link logout" to="/" onClick={logout}>
+                  Logout
+                </Link>
+              </li>
+            ) : null}
           </ul>
         </nav>
       </div>
