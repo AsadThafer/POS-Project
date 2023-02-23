@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
 import SearchBar from "./components/SearchBar/SearchBar";
 import CategoriesTable from "./components/CategoriesTable/CategoriesTable";
-const Test = () => {
+const CategoriesCRUD = () => {
   const [newName, setNewName] = useState("");
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -76,4 +76,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default CategoriesCRUD;
