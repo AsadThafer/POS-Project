@@ -1,6 +1,6 @@
 import ProductsMenu from "./ProductsMenu";
 import Cart from "./Cart";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchAllProducts from "./fetchAllProducts";
 import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
@@ -12,8 +12,13 @@ const PosPage = () => {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || emptycart
   );
-  const [discountRate, setDiscountRate] = useState(0);
-  const [taxRate, setTaxRate] = useState(0);
+  const [discountRate, setDiscountRate] = useState(
+    JSON.parse(localStorage.getItem("discountRate")) || 0
+  );
+
+  const [taxRate, setTaxRate] = useState(
+    JSON.parse(localStorage.getItem("taxRate")) || 0
+  );
 
   const totalprice = cart.reduce(
     (total, product) =>
@@ -35,7 +40,6 @@ const PosPage = () => {
         );
       }
     });
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
 
   const loadProducts = () => {
@@ -51,7 +55,6 @@ const PosPage = () => {
   const handleCheckout = () => {
     createOrder();
     setCart(emptycart);
-    localStorage.setItem("cart", JSON.stringify(emptycart));
   };
 
   const createOrder = async () => {
@@ -79,6 +82,12 @@ const PosPage = () => {
     });
   };
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("discountRate", JSON.stringify(discountRate));
+    localStorage.setItem("taxRate", JSON.stringify(taxRate));
+  }, [cart, discountRate, taxRate]);
+
   const handleSuccessfullAdd = (product) => {
     const addedproduct = product;
     loadProducts();
@@ -96,7 +105,6 @@ const PosPage = () => {
         return [...prevcart, { ...product, count: 1 }];
       }
     });
-    localStorage.setItem("cart", JSON.stringify(cart));
   };
   return (
     <div>
