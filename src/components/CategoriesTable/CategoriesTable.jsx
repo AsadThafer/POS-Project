@@ -1,8 +1,9 @@
 import { useState } from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import "../Table/Table.css";
+import "./CategoriesTable.css";
 
-const CategoriesTable = ({ data }) => {
+const CategoriesTable = ({ data, children }) => {
   const [itemsPerPage, setItemsPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -63,6 +64,11 @@ const CategoriesTable = ({ data }) => {
         <thead>
           <tr>
             <th colSpan={3}>Categories</th>
+          </tr>
+          <tr>
+            <td className="searchFilter" colSpan={3}>
+              {children}
+            </td>
           </tr>
         </thead>
         <tbody>{renderTableData()}</tbody>

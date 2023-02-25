@@ -1,4 +1,3 @@
-import "./SearchBar.css";
 const SearchBar = ({ searchTerm, onSearchTermChange, searchType }) => {
   const handleSearchTermChange = (event) => {
     onSearchTermChange(event.target.value);

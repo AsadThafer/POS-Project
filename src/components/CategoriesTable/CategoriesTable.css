@@ -1,0 +1,13 @@
+.SearchBar {
+  width: 50%;
+  display: inline;
+}
+
+.searchFilter {
+  text-align: center;
+}
+
+.CategoryFilter {
+  width: 50%;
+  display: inline;
+}

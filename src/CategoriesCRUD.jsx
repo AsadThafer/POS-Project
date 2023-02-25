@@ -44,7 +44,7 @@ const CategoriesCRUD = () => {
       setFilteredCategories(data);
     };
     getCategories();
-  }, []);
+  }, [categories.length]);
 
   const onSearchTermChange = (searchTerm) => {
     setSearchTerm(searchTerm);
@@ -67,12 +67,14 @@ const CategoriesCRUD = () => {
       <Button design="create" onClick={createCategory}>
         Create Category
       </Button>
-      <SearchBar
-        searchTerm={searchTerm}
-        onSearchTermChange={onSearchTermChange}
-        searchType="category"
-      />
-      <CategoriesTable data={filteredCategories} />
+
+      <CategoriesTable data={filteredCategories}>
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearchTermChange={onSearchTermChange}
+          searchType="category"
+        />
+      </CategoriesTable>
     </>
   );
 };

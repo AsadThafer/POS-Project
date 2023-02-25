@@ -103,7 +103,7 @@ form {
   }
 }
 
-.CategoryFilter {
+/* .CategoryFilter {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,7 +115,7 @@ form {
   box-sizing: border-box;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-}
+} */
 
 .details {
   margin: 0 auto;

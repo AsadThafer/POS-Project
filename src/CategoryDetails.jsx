@@ -57,7 +57,7 @@ const CategoryDetails = () => {
       method: "DELETE",
     });
     if (response.ok) {
-      navigate("/");
+      navigate("/CategoriesCRUD");
       return response.json();
     }
     throw new Error("Error deleting category");
