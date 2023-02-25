@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
 import SearchBar from "./components/SearchBar/SearchBar";
 import CategoriesTable from "./components/CategoriesTable/CategoriesTable";
+
 const CategoriesCRUD = () => {
   const [newName, setNewName] = useState("");
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredCategories, setFilteredCategories] = useState(categories); // [state, setState]
+  const [filteredCategories, setFilteredCategories] = useState(categories);
 
   const createCategory = async () => {
     if (newName === "") {
@@ -55,7 +56,7 @@ const CategoriesCRUD = () => {
   };
 
   return (
-    <div>
+    <>
       <label htmlFor="categoryName">Category Name</label>
       <input
         type="text"
@@ -72,7 +73,7 @@ const CategoriesCRUD = () => {
         searchType="category"
       />
       <CategoriesTable data={filteredCategories} />
-    </div>
+    </>
   );
 };
 

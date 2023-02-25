@@ -18,35 +18,31 @@ const NavBar = () => {
           <Link className="logo" to="/">
             POS-Project
           </Link>
-          <ul>
-            <li>
-              <Link className="nav-link" to="/CategoriesCRUD">
-                Categories
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-link" to="/productsMenu">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-link" to="/carts">
-                Carts
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-link" to="/orders">
-                Orders
-              </Link>
-            </li>
-            {authentication() ? (
+
+          {authentication() ? (
+            <ul>
+              <li>
+                <Link className="nav-link" to="/CategoriesCRUD">
+                  Categories
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" to="/productsMenu">
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link className="nav-link" to="/orders">
+                  Orders
+                </Link>
+              </li>
               <li>
                 <Link className="nav-link logout" to="/" onClick={logout}>
                   Logout
                 </Link>
               </li>
-            ) : null}
-          </ul>
+            </ul>
+          ) : null}
         </nav>
       </div>
     </header>

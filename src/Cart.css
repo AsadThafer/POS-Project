@@ -1,0 +1,65 @@
+.My_Cart {
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+
+.Product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+.Total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  width: 60%;
+  margin: auto;
+}
+
+.price {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+.delete_button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.cart_product_image {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 900px) {
+  .Product {
+    flex-direction: column;
+  }
+}

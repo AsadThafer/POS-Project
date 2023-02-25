@@ -73,13 +73,55 @@
       "id": 6
     }
   ],
-    "users": [
-      {
-        "id": 1,
-        "username": "admin",
-        "password": "admin12345"
-      }
-      
-    ]
-  
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin12345"
+    }
+  ],
+  "orders": [
+    {
+      "cart_Products": [
+        {
+          "id": 5,
+          "name": "Seafood Boil ",
+          "price": 50,
+          "count": 2
+        }
+      ],
+      "totalprice": 100,
+      "discountRate": 0,
+      "taxRate": 0,
+      "createdTime": "2023-02-25T12:14:30.662Z",
+      "id": 1
+    },
+    {
+      "cart_Products": [
+        {
+          "id": 4,
+          "name": "Fish",
+          "price": 100,
+          "count": 3
+        },
+        {
+          "id": 6,
+          "name": "asad",
+          "price": 100,
+          "count": 2
+        },
+        {
+          "id": 5,
+          "name": "Seafood Boil ",
+          "price": 50,
+          "count": 2
+        }
+      ],
+      "totalprice": 600,
+      "discountRate": 0,
+      "taxRate": 0,
+      "createdTime": "2023-02-25T12:14:50.163Z",
+      "id": 2
+    }
+  ]
 }

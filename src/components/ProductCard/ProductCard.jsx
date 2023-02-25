@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import DeleteDialog from "../DeleteDialog/DeleteDialog";
 import { useNavigate } from "react-router-dom";
 import "./ProductCard.css";
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, addedToCart, type }) => {
   const navigate = useNavigate();
   const deleteProduct = async (id) => {
     const response = await fetch(`http://localhost:3000/products/${id}`, {
@@ -13,6 +13,9 @@ const ProductCard = ({ product }) => {
       return response.json();
     }
     throw new Error("Error deleting product");
+  };
+  const handleAdd = (props) => {
+    addedToCart(props);
   };
 
   return (
@@ -25,10 +28,27 @@ const ProductCard = ({ product }) => {
       <h3>Code : {product.code}</h3>
       <h3>Description : {product.description}</h3>
       <h3 className="Product_Price">Price : {product.price} $</h3>
-      <DeleteDialog
-        id={product.id}
-        onConfirm={() => deleteProduct(product.id)}
-      />
+      {type !== "CartAdd" && (
+        <DeleteDialog
+          id={product.id}
+          onConfirm={() => deleteProduct(product.id)}
+        />
+      )}
+      {type === "CartAdd" && (
+        <button
+          onClick={() =>
+            console.log("added to cart") ||
+            handleAdd({
+              id: product.id,
+              name: product.name,
+              price: product.price,
+              image: product.image,
+            })
+          }
+        >
+          Add to Cart
+        </button>
+      )}
       <span> Category Id : {product.categoryId}</span>
     </div>
   );
