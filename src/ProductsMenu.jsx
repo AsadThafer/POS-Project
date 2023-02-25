@@ -4,14 +4,13 @@ import { useQuery } from "@tanstack/react-query";
 import fetchCategories from "./fetchCategories";
 import Table from "./components/Table/Table";
 
-const ProductsMenu = () => {
+const ProductsMenu = ({ onSuccessfullAdd, type }) => {
   const [products, setProducts] = useState([]); // [state, setState]
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState(products); // [state, setState]
   const [categoryFilter, setCategoryFilter] = useState("");
 
   const categories = useQuery(["categories"], fetchCategories);
-
   useEffect(() => {
     const getProducts = async () => {
       let uri = "http://localhost:3000/products";
@@ -59,9 +58,17 @@ const ProductsMenu = () => {
 
   const categoryList = categories.data;
 
+  const addedToCart = (product) => {
+    onSuccessfullAdd(product);
+  };
+
   return (
     <>
-      <Table data={filteredProducts}>
+      <Table
+        data={filteredProducts}
+        addedToCartInProductmenu={addedToCart}
+        type={type}
+      >
         <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}

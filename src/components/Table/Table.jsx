@@ -3,7 +3,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import "./Table.css";
 import { Link } from "react-router-dom";
 
-const Table = ({ data, children }) => {
+const Table = ({ type, data, children, addedToCartInProductmenu }) => {
   const [itemsPerPage, setItemsPerPage] = useState(6);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -11,6 +11,10 @@ const Table = ({ data, children }) => {
   const totalItems = data.length;
 
   const handleClick = (page) => setCurrentPage(page);
+
+  const addedToCartinTable = (props) => {
+    addedToCartInProductmenu(props);
+  };
 
   const renderTableData = () => {
     const start = (currentPage - 1) * itemsPerPage;
@@ -20,7 +24,11 @@ const Table = ({ data, children }) => {
     for (let i = start; i < end; i += 3) {
       const row = data.slice(i, i + 3).map((item) => (
         <td key={item.id}>
-          <ProductCard product={item} />
+          <ProductCard
+            type={type}
+            product={item}
+            addedToCart={addedToCartinTable}
+          />
         </td>
       ));
 
