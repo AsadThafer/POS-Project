@@ -4,7 +4,7 @@ import fetchCategory from "./fetchCategory";
 import Products from "./Products";
 import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
-import DeleteDialog from "./components/DeleteDialog/DeleteDialog";
+import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
 import NotFound from "./components/NotFound/NotFound";
 const CategoryDetails = () => {
   const [category, setCategory] = useState({});
@@ -116,7 +116,7 @@ const CategoryDetails = () => {
         >
           cancel Update
         </Button>
-        <DeleteDialog
+        <ConfirmDialog
           id={category.id}
           onConfirm={() => deleteCategory(category.id)}
         />

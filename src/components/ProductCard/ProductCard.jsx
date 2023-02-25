@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import DeleteDialog from "../DeleteDialog/DeleteDialog";
+import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 import { useNavigate } from "react-router-dom";
 import "./ProductCard.css";
 const ProductCard = ({ product, addedToCart, type }) => {
@@ -29,7 +29,7 @@ const ProductCard = ({ product, addedToCart, type }) => {
       <h3>Description : {product.description}</h3>
       <h3 className="Product_Price">Price : {product.price} $</h3>
       {type !== "CartAdd" && (
-        <DeleteDialog
+        <ConfirmDialog
           id={product.id}
           onConfirm={() => deleteProduct(product.id)}
         />

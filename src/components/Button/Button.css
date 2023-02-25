@@ -24,6 +24,9 @@ button {
   background-color: gray;
 }
 
+.checkout {
+  background-color: #4caf50;
+}
 .back {
   width: 150px;
   height: 50px;

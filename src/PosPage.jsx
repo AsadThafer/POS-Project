@@ -3,9 +3,11 @@ import Cart from "./Cart";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchAllProducts from "./fetchAllProducts";
+import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
 
 const emptycart = [];
 const PosPage = () => {
+  const type = "checkout";
   const products = useQuery(["products"], fetchAllProducts);
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || emptycart
@@ -109,14 +111,14 @@ const PosPage = () => {
         setDiscountRate={setDiscountRate}
         setTaxRate={setTaxRate}
       />
-      <button
-        className="checkout_button"
-        onClick={() => {
-          handleCheckout();
-        }}
-      >
-        Checkout now
-      </button>
+      {cart.length > 0 ? (
+        <ConfirmDialog
+          type={type}
+          onClick={() => {
+            handleCheckout();
+          }}
+        />
+      ) : null}
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./DeleteDialog.css";
+import "./ConfirmDialog.css";
 import Button from "../Button/Button";
 
-function DeleteDialog(props) {
+function ConfirmDialog(props) {
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const handleDelete = () => {
+  const handleConfirm = () => {
     setShowConfirm(false);
     if (props.onConfirm) {
       props.onConfirm();
@@ -29,17 +29,35 @@ function DeleteDialog(props) {
 
   return (
     <>
-      <Button design="delete" onClick={handleShowConfirm}>
-        Delete
+      <Button
+        onClick={handleShowConfirm}
+        design={props.type === "checkout" ? "checkout" : "delete"}
+      >
+        {props.type === "checkout" ? "Checkout" : "delete"}
       </Button>
       {showConfirm && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div className="confirm-popup" onClick={handleOverlayClick}>
           <div className="confirm-popup-content">
-            <p>Are you sure you want to delete item with id {props.id}?</p>
-            <Button design="delete" onClick={handleDelete}>
-              Yes, Delete
+            <h2>{props.type === "checkout" ? "Checkout" : "Delete"}</h2>
+
+            <p>
+              Are you sure you want to{" "}
+              {props.type === "checkout" ? "checkout" : "delete"}
+              {props.type === "checkout" ? (
+                <span> all items in cart?</span>
+              ) : (
+                <span> this item with id {props.id}??</span>
+              )}
+            </p>
+
+            <Button
+              design={props.type === "checkout" ? "checkout" : "delete"}
+              onClick={handleConfirm}
+            >
+              Yes, {props.type === "checkout" ? "Checkout" : "Delete"}
             </Button>
+
             <Button design="cancel" onClick={handleCancel}>
               Cancel
             </Button>
@@ -50,4 +68,4 @@ function DeleteDialog(props) {
   );
 }
 
-export default DeleteDialog;
+export default ConfirmDialog;

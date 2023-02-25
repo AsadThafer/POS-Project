@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
-import DeleteDialog from "./components/DeleteDialog/DeleteDialog";
+import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
 import NotFound from "./components/NotFound/NotFound";
 const ProductDetails = () => {
   const [name, setName] = useState("");
@@ -163,7 +163,7 @@ const ProductDetails = () => {
           >
             cancel Update
           </Button>
-          <DeleteDialog
+          <ConfirmDialog
             id={product.id}
             onClick={() => deleteProduct(product.id)}
           />
