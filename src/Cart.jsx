@@ -39,8 +39,8 @@ const Cart = ({
               alt={product.name}
             />
             <p>{product.name}</p>
-            <p>{product.price}</p>
-            <p>{product.count}</p>
+            <p>{product.price} $</p>
+            <p>x{product.count}</p>
             <button
               className="delete_button"
               onClick={() => handleDelete(product)}
@@ -72,7 +72,7 @@ const Cart = ({
         in %
         <div className="Total">
           <p>Total </p>
-          <p className="price">${totalprice}</p>
+          <p className="price">{totalprice} $</p>
         </div>
       </>
     );

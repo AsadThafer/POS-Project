@@ -10,6 +10,7 @@ const ProductCard = ({ product, addedToCart, type }) => {
     });
     if (response.ok) {
       navigate(`/CategoryDetails/${product.categoryId}`);
+      window.location.reload();
       return response.json();
     }
     throw new Error("Error deleting product");

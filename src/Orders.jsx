@@ -25,6 +25,7 @@ const Orders = () => {
     });
     setOrders(filteredOrders);
   };
+
   return (
     <div>
       <h1>Orders</h1>
@@ -35,8 +36,8 @@ const Orders = () => {
           <div key={order.id} className="order">
             <h2>Order ID: {order.id}</h2>
             <h3>Order Date: {order.createdTime}</h3>
-            <h3>Order Discount Rate: {order.discountRate}</h3>
-            <h3>Order tax Rate: {order.taxRate}</h3>
+            <h3>Order Discount Rate: {order.discountRate}%</h3>
+            <h3>Order tax Rate: {order.taxRate}%</h3>
 
             <h3>
               Order Items:

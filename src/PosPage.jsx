@@ -55,6 +55,9 @@ const PosPage = () => {
   const handleCheckout = () => {
     createOrder();
     setCart(emptycart);
+    setDiscountRate(0);
+    setTaxRate(0);
+    window.location.reload();
   };
 
   const createOrder = async () => {
@@ -122,7 +125,7 @@ const PosPage = () => {
       {cart.length > 0 ? (
         <ConfirmDialog
           type={type}
-          onClick={() => {
+          onConfirm={() => {
             handleCheckout();
           }}
         />
