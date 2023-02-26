@@ -1,11 +1,11 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import fetchCategory from "./fetchCategory";
+import fetchCategory from "../../../helpers/fetchCategories/fetchCategory";
 import Products from "./Products";
 import { useState, useEffect } from "react";
-import Button from "./components/Button/Button";
-import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
-import NotFound from "./components/NotFound/NotFound";
+import Button from "../../../components/Button/Button";
+import ConfirmDialog from "../../../components/ConfirmDialog/ConfirmDialog";
+import NotFound from "../../NotFound/NotFound";
 import moment from "moment";
 const CategoryDetails = () => {
   const [category, setCategory] = useState({});

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import SearchBar from "./components/SearchBar/SearchBar";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import { useQuery } from "@tanstack/react-query";
-import fetchCategories from "./fetchCategories";
-import Table from "./components/Table/Table";
+import fetchCategories from "../../helpers/fetchCategories/fetchCategories";
+import Table from "../../components/Table/Table";
 
 const ProductsMenu = ({ onSuccessfullAdd, type }) => {
   const [products, setProducts] = useState([]); // [state, setState]

@@ -71,11 +71,13 @@ const Table = ({ type, data, children, addedToCartInProductmenu }) => {
       <table>
         <thead>
           <tr>
-            <th colSpan={2}>Products</th>
-            <th colSpan={1}>
-              <Link className="Add_product_link" to={`/AddProductForm/`}>
-                Add Product
-              </Link>
+            <th className="products_table_header" colSpan={3}>
+              <p>Products</p>
+              <span>
+                <Link className="Add_product_link" to={`/AddProductForm/`}>
+                  Add Product
+                </Link>
+              </span>
             </th>
           </tr>
           <tr>

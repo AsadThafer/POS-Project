@@ -76,6 +76,16 @@
       "categoryId": "3",
       "createdTime": "2023-02-25T13:57:54.540Z",
       "id": 7
+    },
+    {
+      "name": "P1",
+      "price": 100,
+      "description": "Test",
+      "code": 56465,
+      "image": "https://cdn.shopify.com/s/files/1/0066/1769/4275/products/whitelsmen_2048x2048.jpg?v=1629899502",
+      "categoryId": "3",
+      "createdTime": "2023-02-26T13:33:37.688Z",
+      "id": 8
     }
   ],
   "users": [
@@ -89,71 +99,38 @@
     {
       "cart_Products": [
         {
-          "id": 5,
-          "name": "Seafood Boil ",
-          "price": 50,
+          "id": 4,
+          "name": "Fish",
+          "price": 100,
           "count": 2
         }
       ],
-      "totalprice": 100,
+      "totalprice": 200,
       "discountRate": 0,
       "taxRate": 0,
-      "createdTime": "2023-02-25T12:14:30.662Z",
+      "createdTime": "2023-02-26T13:14:45.269Z",
       "id": 1
     },
     {
       "cart_Products": [
         {
-          "id": 4,
-          "name": "Fish",
-          "price": 100,
-          "count": 3
-        },
-        {
-          "id": 6,
-          "name": "asad",
-          "price": 100,
-          "count": 2
-        },
-        {
           "id": 5,
           "name": "Seafood Boil ",
           "price": 50,
-          "count": 2
+          "count": 1
         }
       ],
-      "totalprice": 600,
+      "totalprice": 50,
       "discountRate": 0,
       "taxRate": 0,
-      "createdTime": "2023-02-25T12:14:50.163Z",
+      "createdTime": "2023-02-26T13:14:47.090Z",
       "id": 2
     },
     {
       "cart_Products": [
         {
-          "id": 7,
-          "name": "P1",
-          "price": 100,
-          "count": 2
-        }
-      ],
-      "totalprice": 270,
-      "discountRate": "5",
-      "taxRate": "40",
-      "createdTime": "2023-02-25T14:25:25.212Z",
-      "id": 3
-    },
-    {
-      "cart_Products": [
-        {
-          "id": 7,
-          "name": "P1",
-          "price": 100,
-          "count": 2
-        },
-        {
-          "id": 6,
-          "name": "asad",
+          "id": 4,
+          "name": "Fish",
           "price": 100,
           "count": 2
         },
@@ -161,62 +138,14 @@
           "id": 5,
           "name": "Seafood Boil ",
           "price": 50,
-          "count": 2
-        },
-        {
-          "id": 4,
-          "name": "Fish",
-          "price": 100,
-          "count": 2
-        }
-      ],
-      "totalprice": 700,
-      "discountRate": "5",
-      "taxRate": "5",
-      "createdTime": "2023-02-25T14:26:14.365Z",
-      "id": 4
-    },
-    {
-      "cart_Products": [
-        {
-          "id": 7,
-          "name": "P1",
-          "price": 100,
           "count": 1
         }
       ],
-      "totalprice": 101,
-      "discountRate": "17",
-      "taxRate": "18",
-      "createdTime": "2023-02-26T11:46:14.435Z",
-      "id": 5
-    },
-    {
-      "cart_Products": [
-        {
-          "id": 4,
-          "name": "Fish",
-          "price": 100,
-          "count": 2
-        },
-        {
-          "id": 5,
-          "name": "Seafood Boil ",
-          "price": 50,
-          "count": 2
-        },
-        {
-          "id": 7,
-          "name": "P1",
-          "price": 100,
-          "count": 2
-        }
-      ],
-      "totalprice": 500,
+      "totalprice": 250,
       "discountRate": 0,
       "taxRate": 0,
-      "createdTime": "2023-02-26T12:18:17.962Z",
-      "id": 6
+      "createdTime": "2023-02-26T13:32:50.946Z",
+      "id": 3
     }
   ]
 }

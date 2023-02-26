@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import fetchCategory from "./fetchCategory";
-import Button from "./components/Button/Button";
-import fetchCategories from "./fetchCategories";
+import fetchCategory from "../../helpers/fetchCategories/fetchCategory";
+import Button from "../../components/Button/Button";
+import fetchCategories from "../../helpers/fetchCategories/fetchCategories";
 import { useFormik } from "formik";
 
 const AddProductForm = () => {

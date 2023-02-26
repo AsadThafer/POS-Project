@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import ProductCard from "./components/ProductCard/ProductCard";
+import ProductCard from "../../../components/ProductCard/ProductCard";
 
-import fetchProducts from "./fetchProducts";
+import fetchProducts from "../../../helpers/fetchProducts/fetchProducts";
 
 const Products = ({ id }) => {
   const results = useQuery(["products", id], fetchProducts);

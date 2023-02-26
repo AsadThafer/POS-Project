@@ -1,9 +1,9 @@
-import ProductsMenu from "./ProductsMenu";
-import Cart from "./Cart";
+import ProductsMenu from "../Products/ProductsMenu";
+import Cart from "../../components/Cart/Cart";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import fetchAllProducts from "./fetchAllProducts";
-import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
+import fetchAllProducts from "../../helpers/fetchProducts/fetchAllProducts";
+import ConfirmDialog from "../../components/ConfirmDialog/ConfirmDialog";
 import "./POSPage.css";
 
 const emptycart = [];

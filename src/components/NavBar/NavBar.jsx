@@ -1,4 +1,4 @@
-import authentication from "../../Login/authentication";
+import authentication from "../../pages/Login/authentication";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";

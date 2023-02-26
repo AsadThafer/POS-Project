@@ -16,7 +16,6 @@ td {
   padding: 12px;
   border: 1px solid #ddd;
   margin: auto;
-  width: 100%;
 }
 
 th {
@@ -104,6 +103,7 @@ th {
     display: block;
     font-weight: bold;
     text-align: center;
+    width: 100%;
   }
 
   td:before {
@@ -116,4 +116,8 @@ th {
   td:last-child {
     margin-top: 10px;
   }
+}
+
+.products_table_header {
+  padding: 10px;
 }

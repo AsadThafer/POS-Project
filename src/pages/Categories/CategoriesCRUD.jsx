@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Button from "./components/Button/Button";
-import SearchBar from "./components/SearchBar/SearchBar";
-import CategoriesTable from "./components/CategoriesTable/CategoriesTable";
+import Button from "../../components/Button/Button";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import CategoriesTable from "../../components/CategoriesTable/CategoriesTable";
 
 const CategoriesCRUD = () => {
   const [newName, setNewName] = useState("");
