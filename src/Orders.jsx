@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchAllOrders from "./fetchAllOrders";
 import { useState } from "react";
 import "./Orders.css";
+import moment from "moment";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const myorders = useQuery(["orders"], fetchAllOrders);
@@ -31,11 +32,14 @@ const Orders = () => {
       <h1>Orders</h1>
       <label htmlFor="search">Search Orders by Id :</label>
       <input type="text" onChange={searchOrders} />
+      <span className="ordersCount">
+        Displayed Orders Count: {orders.length}
+      </span>
       <div className="orders">
         {orders.map((order) => (
           <div key={order.id} className="order">
             <h2>Order ID: {order.id}</h2>
-            <h3>Order Date: {order.createdTime}</h3>
+            <h3>Order Date: {moment(order.createdTime).format("lll")}</h3>
             <h3>Order Discount Rate: {order.discountRate}%</h3>
             <h3>Order tax Rate: {order.taxRate}%</h3>
 

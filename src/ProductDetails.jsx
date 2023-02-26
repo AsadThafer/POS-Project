@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
 import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
 import NotFound from "./components/NotFound/NotFound";
+import moment from "moment";
 const ProductDetails = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -138,10 +139,17 @@ const ProductDetails = () => {
             value={isUpdating ? description : product.description}
             onChange={(e) => setDescription(e.target.value)}
           ></input>
-          <h3>
-            Product last edit time :
-            {product.createdTime ? product.createdTime.toString() : "No time"}
-          </h3>
+          <h3>Product last edit time :</h3>
+          <p>
+            {moment(product.createdTime).format("MMMM Do YYYY, h:mm:ss a")}
+            <p>
+              (
+              {product.createdTime
+                ? moment(product.createdTime).fromNow()
+                : "No time"}
+              )
+            </p>
+          </p>
           <Button
             design="update"
             onClick={() => startInlineEdit(product.id)}

@@ -4,12 +4,12 @@
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-  width: 60%;
+  width: 80%;
   margin: auto;
   text-align: center;
 }
 
-.Product {
+.CartProduct {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -19,7 +19,7 @@
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  width: 60%;
+  width: 80%;
   margin: auto;
   text-align: center;
 }
@@ -33,7 +33,7 @@
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  width: 60%;
+  width: 80%;
   margin: auto;
 }
 
@@ -62,4 +62,20 @@
   .Product {
     flex-direction: column;
   }
+  .CartProduct {
+    width: 100%;
+  }
+  .Total {
+    width: 100%;
+  }
+  .My_Cart {
+    width: 100%;
+  }
+}
+
+.Poscart {
+  width: 100%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 5px;
 }

@@ -33,18 +33,34 @@ function ConfirmDialog(props) {
         onClick={handleShowConfirm}
         design={props.type === "checkout" ? "checkout" : "delete"}
       >
-        {props.type === "checkout" ? "Checkout" : "delete"}
+        {props.type === "checkout"
+          ? "Checkout"
+          : props.type === "clear"
+          ? "Clear Cart"
+          : "delete"}
       </Button>
       {showConfirm && (
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div className="confirm-popup" onClick={handleOverlayClick}>
           <div className="confirm-popup-content">
-            <h2>{props.type === "checkout" ? "Checkout" : "Delete"}</h2>
+            <h2>
+              {props.type === "checkout"
+                ? "Checkout"
+                : props.type === "clear"
+                ? "Clear Cart"
+                : "Delete"}
+            </h2>
 
             <p>
               Are you sure you want to{" "}
-              {props.type === "checkout" ? "checkout" : "delete"}
+              {props.type === "checkout"
+                ? "checkout"
+                : props.type === "clear"
+                ? "clear"
+                : "delete"}
               {props.type === "checkout" ? (
+                <span> all items in cart?</span>
+              ) : props.type === "clear" ? (
                 <span> all items in cart?</span>
               ) : (
                 <span> this item with id {props.id}??</span>

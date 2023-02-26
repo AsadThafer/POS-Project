@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import fetchAllProducts from "./fetchAllProducts";
 import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
+import "./POSPage.css";
 
 const emptycart = [];
 const PosPage = () => {
-  const type = "checkout";
+  const checkout = "checkout";
+  const clear = "clear";
   const products = useQuery(["products"], fetchAllProducts);
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || emptycart
@@ -21,13 +23,14 @@ const PosPage = () => {
   );
 
   const totalprice = cart.reduce(
-    (total, product) =>
-      total +
-      product.price * product.count -
-      (parseInt(discountRate) / 100) * product.price * product.count +
-      (parseInt(taxRate) / 100) * product.price * product.count,
+    (total, product) => total + product.price * product.count,
     0
   );
+
+  const finalprice =
+    totalprice -
+    totalprice * (discountRate / 100) +
+    totalprice * (taxRate / 100);
 
   const handleDelete = ({ id }) => {
     setCart((prevcart) => {
@@ -53,11 +56,27 @@ const PosPage = () => {
   };
 
   const handleCheckout = () => {
+    if (cart.length === 0) {
+      return;
+    }
+    if (discountRate > 100 || discountRate < 0) {
+      return;
+    }
+    if (taxRate > 100 || taxRate < 0) {
+      return;
+    }
     createOrder();
     setCart(emptycart);
     setDiscountRate(0);
     setTaxRate(0);
     window.location.reload();
+  };
+
+  const clearCart = () => {
+    setCart(emptycart);
+    setDiscountRate(0);
+    setTaxRate(0);
+    window.scrollTo(0, 0);
   };
 
   const createOrder = async () => {
@@ -71,7 +90,7 @@ const PosPage = () => {
     });
     const doc = {
       cart_Products: checkedoutcart,
-      totalprice: totalprice,
+      totalprice: finalprice,
       discountRate: discountRate,
       taxRate: taxRate,
       createdTime: new Date(),
@@ -110,7 +129,7 @@ const PosPage = () => {
     });
   };
   return (
-    <div>
+    <div className="PosPage">
       <ProductsMenu type={"CartAdd"} onSuccessfullAdd={handleSuccessfullAdd} />
 
       <Cart
@@ -121,15 +140,25 @@ const PosPage = () => {
         taxRate={taxRate}
         setDiscountRate={setDiscountRate}
         setTaxRate={setTaxRate}
-      />
-      {cart.length > 0 ? (
-        <ConfirmDialog
-          type={type}
-          onConfirm={() => {
-            handleCheckout();
-          }}
-        />
-      ) : null}
+        finalprice={finalprice}
+      >
+        {cart.length > 0 ? (
+          <>
+            <ConfirmDialog
+              type={checkout}
+              onConfirm={() => {
+                handleCheckout();
+              }}
+            />
+            <ConfirmDialog
+              type={clear}
+              onConfirm={() => {
+                clearCart();
+              }}
+            />
+          </>
+        ) : null}
+      </Cart>
     </div>
   );
 };

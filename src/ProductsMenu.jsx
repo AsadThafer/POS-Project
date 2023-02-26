@@ -63,7 +63,7 @@ const ProductsMenu = ({ onSuccessfullAdd, type }) => {
   };
 
   return (
-    <>
+    <div className="ProductsMenu">
       <Table
         data={filteredProducts}
         addedToCartInProductmenu={addedToCart}
@@ -94,7 +94,7 @@ const ProductsMenu = ({ onSuccessfullAdd, type }) => {
           </select>
         </div>
       </Table>
-    </>
+    </div>
   );
 };
 

@@ -7,6 +7,8 @@ const Cart = ({
   setTaxRate,
   discountRate,
   taxRate,
+  finalprice,
+  children,
 }) => {
   console.log(cart);
 
@@ -22,17 +24,17 @@ const Cart = ({
 
   if (cart.length === 0) {
     return (
-      <>
+      <div className="Poscart">
         <h2 className=" My_Cart">Cart</h2>
         <p className=" My_Cart">Your Cart is Empty</p>
-      </>
+      </div>
     );
   } else {
     return (
-      <>
+      <div className="Poscart">
         <h2 className=" My_Cart">Cart</h2>
         {cart.map((product) => (
-          <div className="Product" key={product.id}>
+          <div className="CartProduct" key={product.id}>
             <img
               className="cart_product_image"
               src={product.image}
@@ -71,10 +73,12 @@ const Cart = ({
         />
         in %
         <div className="Total">
-          <p>Total </p>
-          <p className="price">{totalprice} $</p>
+          <p>Total Tax : +{totalprice * (taxRate / 100)} $</p>
+          <p>Total Discount : - {totalprice * (discountRate / 100)} $</p>
+          <p className="price">Total : {finalprice} $</p>
         </div>
-      </>
+        {children}
+      </div>
     );
   }
 };

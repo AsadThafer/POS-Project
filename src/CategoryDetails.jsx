@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Button from "./components/Button/Button";
 import ConfirmDialog from "./components/ConfirmDialog/ConfirmDialog";
 import NotFound from "./components/NotFound/NotFound";
+import moment from "moment";
 const CategoryDetails = () => {
   const [category, setCategory] = useState({});
   const [name, setName] = useState("");
@@ -92,8 +93,9 @@ const CategoryDetails = () => {
           onChange={(e) => setName(e.target.value)}
         ></input>
         <p>
-          Category Last edit Time :{" "}
-          {category.createdTime ? category.createdTime.toString() : "No time"}
+          Category Last edit Time :
+          {moment(category.createdTime).format("MMMM Do YYYY, h:mm:ss a")}({" "}
+          {moment(category.createdTime).fromNow()} )
         </p>
         <Button
           design="update"
