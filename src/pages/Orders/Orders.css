@@ -8,11 +8,15 @@
 }
 
 .order {
+  width: 50%;
   display: flex;
   flex-direction: column;
   margin: 20px 0;
   padding: 20px;
   border: 1px solid #ccc;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .orderItem {
@@ -31,4 +35,10 @@
 .ordersCount {
   margin: 20px 0;
   padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .order {
+    width: 90%;
+  }
 }

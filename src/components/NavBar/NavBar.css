@@ -1,82 +1,94 @@
-nav {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 10px;
-}
-.navigation {
-  width: 100%;
+.navbar {
   top: 0;
   left: 0;
-  right: 0;
-  background-color: hsla(248, 31%, 5%, 0.815);
-  overflow: hidden;
-  margin-bottom: 10px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
 }
 
-nav ul li,
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
 .logo {
-  list-style-type: none;
-  display: inline-block;
-  padding: 10px 25px;
-}
-
-.nav-link {
+  font-size: 2rem;
+  color: #333;
   text-decoration: none;
-  cursor: pointer;
-  color: white;
-}
-
-.nav-link:hover,
-.nav-link:focus {
-  color: #8c7ae6;
-}
-.nav-link:active {
-  color: red;
-}
-
-.logo {
-  font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+}
+
+.menu-icon {
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  display: none;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  margin: 0 1rem;
+  list-style: none;
+}
+
+.menu a {
+  color: #333;
   text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
-.logo,
-h2 .nav-link {
-  text-shadow: 2px 2px blue;
-}
+/* Media queries */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
-.nav-link.logout {
-  color: red;
-}
-@media screen and (max-width: 768px) {
   .logo {
-    display: none;
-  }
-  nav {
-    font-size: 0.85em;
-    justify-content: space-around;
-    border-bottom: 1px #8c7ae6 solid;
-  }
-  .navigation {
-    position: static;
-    flex-direction: column;
-  }
-
-  li {
-    padding: 2%;
-  }
-}
-
-@media screen and (max-width: 481px) {
-  nav ul li {
-    display: block;
-    text-align: center;
-    font-size: 1rem;
-  }
-  h1 {
     font-size: 1.5rem;
   }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu li {
+    margin: 0.5rem 0;
+  }
+
+  .menu a {
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+}
+
+.menu .logout {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
