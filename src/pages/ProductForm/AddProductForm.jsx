@@ -35,8 +35,8 @@ const AddProductForm = () => {
     }
     if (!values.description) {
       errors.description = "Required";
-    } else if (values.description.length > 15) {
-      errors.description = "Must be 15 characters or less";
+    } else if (values.description.length > 20) {
+      errors.description = "Must be 20 characters or less";
     }
     if (!values.code) {
       errors.code = "Required";
