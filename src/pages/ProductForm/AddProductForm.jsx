@@ -77,6 +77,7 @@ const AddProductForm = () => {
         }).then((res) => {
           if (res.ok) {
             navigate(`/CategoryDetails/${id}`);
+            window.location.reload();
           }
         });
       }
