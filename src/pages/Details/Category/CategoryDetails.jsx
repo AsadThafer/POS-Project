@@ -12,6 +12,13 @@ const CategoryDetails = () => {
   const [name, setName] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
   const navigate = useNavigate();
+  // eslint-disable-next-line no-unused-vars
+  const { id } = useParams();
+  const results = useQuery(["details", id], fetchCategory, {
+    staleTime: 300000,
+    refetchInterval: 300000,
+    refetchIntervalInBackground: true,
+  });
 
   useEffect(() => {
     const getProduct = async () => {
@@ -63,10 +70,6 @@ const CategoryDetails = () => {
     }
     throw new Error("Error deleting category");
   };
-
-  // eslint-disable-next-line no-unused-vars
-  const { id } = useParams();
-  const results = useQuery(["details", id], fetchCategory);
 
   if (results.isError) {
     return <NotFound />;

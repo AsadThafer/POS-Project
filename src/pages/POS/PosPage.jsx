@@ -5,18 +5,16 @@ import { useQuery } from "@tanstack/react-query";
 import fetchAllProducts from "../../helpers/fetchProducts/fetchAllProducts";
 import ConfirmDialog from "../../components/ConfirmDialog/ConfirmDialog";
 import "./POSPage.css";
-import BarcodeScanner from "../../helpers/QrReader/BarcodeScanner";
 
 const emptycart = [];
 const PosPage = () => {
-  const [showScanner, setShowScanner] = useState(false);
-
-  const handleScanButtonClick = () => {
-    setShowScanner(!showScanner);
-  };
   const checkout = "checkout";
   const clear = "clear";
-  const products = useQuery(["products"], fetchAllProducts);
+  const products = useQuery(["products"], fetchAllProducts, {
+    staleTime: 300000,
+    refetchInterval: 300000,
+    refetchIntervalInBackground: true,
+  });
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cart")) || emptycart
   );
@@ -137,10 +135,6 @@ const PosPage = () => {
 
   return (
     <>
-      <div className="scanner">
-        <button onClick={handleScanButtonClick}>Scan Barcode</button>
-      </div>
-      {showScanner && <BarcodeScanner />}
       <div className="PosPage">
         <ProductsMenu
           type={"CartAdd"}

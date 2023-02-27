@@ -4,7 +4,11 @@ import ProductCard from "../../../components/ProductCard/ProductCard";
 import fetchProducts from "../../../helpers/fetchProducts/fetchProducts";
 
 const Products = ({ id }) => {
-  const results = useQuery(["products", id], fetchProducts);
+  const results = useQuery(["products", id], fetchProducts, {
+    staleTime: 300000,
+    refetchInterval: 300000,
+    refetchIntervalInBackground: true,
+  });
 
   if (results.isError) {
     return (

@@ -120,7 +120,7 @@ const ProductDetails = () => {
             type="text"
             className="edit_input"
             disabled={isUpdating ? false : true}
-            value={isUpdating ? price : product.price}
+            value={isUpdating ? price : product.price + ` $`}
             onChange={(e) => setPrice(e.target.value)}
           ></input>
           <h3>Product Code :</h3>

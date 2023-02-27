@@ -121,3 +121,11 @@ th {
 .products_table_header {
   padding: 10px;
 }
+@media screen and (max-width: 767px) {
+  .searchFilter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}

@@ -10,8 +10,16 @@ const AddProductForm = () => {
   // eslint-disable-next-line no-unused-vars
   let { id } = useParams();
 
-  const results = useQuery(["details", id], fetchCategory);
-  const categories = useQuery(["categories"], fetchCategories);
+  const results = useQuery(["details", id], fetchCategory, {
+    staleTime: 300000,
+    refetchInterval: 300000,
+    refetchIntervalInBackground: true,
+  });
+  const categories = useQuery(["categories"], fetchCategories, {
+    staleTime: 300000,
+    refetchInterval: 300000,
+    refetchIntervalInBackground: true,
+  });
 
   const validate = (values) => {
     const errors = {};
@@ -85,6 +93,7 @@ const AddProductForm = () => {
         ).then((res) => {
           if (res.ok) {
             navigate(`/CategoryDetails/${product.categoryId}`);
+            window.location.reload();
           }
         });
       }

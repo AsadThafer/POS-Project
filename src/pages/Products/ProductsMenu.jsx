@@ -10,7 +10,11 @@ const ProductsMenu = ({ onSuccessfullAdd, type }) => {
   const [filteredProducts, setFilteredProducts] = useState(products); // [state, setState]
   const [categoryFilter, setCategoryFilter] = useState("");
 
-  const categories = useQuery(["categories"], fetchCategories);
+  const categories = useQuery(["categories"], fetchCategories, {
+    staleTime: 300000,
+    refetchInterval: 300000,
+    refetchIntervalInBackground: true,
+  });
   useEffect(() => {
     const getProducts = async () => {
       let uri = "http://localhost:3000/products";

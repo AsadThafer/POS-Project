@@ -25,13 +25,6 @@
   object-fit: contain;
 }
 
-@media screen and (max-width: 767px) {
-  .Product_Card {
-    border: none;
-    width: 100%;
-  }
-}
-
 .Product_Price {
   font-weight: bold;
   color: #2196f3;
@@ -45,4 +38,11 @@
   flex-wrap: wrap;
   margin: auto;
   justify-content: center;
+}
+
+@media screen and (max-width: 900px) {
+  .Product_Card {
+    border: none;
+    width: 100%;
+  }
 }

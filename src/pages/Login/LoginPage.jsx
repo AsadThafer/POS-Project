@@ -28,8 +28,8 @@ const LoginPage = () => {
           if (user) {
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("token", token);
+            navigate("/");
             window.location.reload();
-            navigate("/PosPage");
           } else {
             setFieldError("password", "Invalid username or password");
           }

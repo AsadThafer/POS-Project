@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import Button from "../../components/Button/Button";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import CategoriesTable from "../../components/CategoriesTable/CategoriesTable";
-
+import { useNavigate } from "react-router-dom";
 const CategoriesCRUD = () => {
   const [newName, setNewName] = useState("");
   const [categories, setCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCategories, setFilteredCategories] = useState(categories);
+
+  const navigate = useNavigate();
 
   const createCategory = async () => {
     if (newName === "") {
@@ -29,6 +31,8 @@ const CategoriesCRUD = () => {
       const data = await response.json();
       setCategories(data);
       setFilteredCategories(data);
+      navigate("/CategoryDetails/" + data[data.length - 1].id);
+      window.location.reload();
     };
 
     createPost();
