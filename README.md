@@ -28,6 +28,11 @@ POS-Project is a Point-of-Sale application built with React. It is designed to b
    - User can clear the cart to empty state when needed .
 - Orders Page (user can view/delete/search orders made in the POS Page).
 
+## Documentation
+
+POS-Project-React documentation can be found on notion :
+<a href="https://splashy-maraca-654.notion.site/Documentation-826ccec28e6e490099c9891fb7237f49">Notion Documentation</a>
+
 ## Installation
 
 POS-Project-React can be easily installed with the following steps:
