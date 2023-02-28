@@ -1,5 +1,8 @@
-# POS-Project
-Foothill Technology Solutions - internship Final Project
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/62269745/174906065-7bb63e14-879a-4740-849c-0821697aeec2.png#gh-light-mode-only" width="40%">
+    <img src="https://user-images.githubusercontent.com/62269745/174906068-aad23112-20fe-4ec8-877f-3ee1d9ec0a69.png#gh-dark-mode-only" width="40%">
+</p>
+<h1 align="center"> Product Management POS System</h1>
 
 POS-Project is a Point-of-Sale application built with React. It is designed to be a web-based application with a sleek and modern user-interface.
 
@@ -54,4 +57,9 @@ If you would like to contribute to the project, please fork the repository and m
 
 ## License
 
-POS-Project-React is licensed under the MIT License.
+POS-Project-React is licensed under the MIT License.see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+- This project is a part of the [Foothill Technology Solutions, LLC.](https://www.foothillsolutions.com/) internship program.
+- Thanks to [MohammadAbusaa](https://github.com/MohammadAbusaa) for the his advisory and support during the training period.
