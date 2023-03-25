@@ -26,11 +26,9 @@ const CategoryDetails = () => {
       const response = await fetch(uri);
       const data = await response.json();
       setCategory(data);
-      console.log(data);
     };
     getProduct();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isUpdating]);
+  }, [id, isUpdating]);
 
   const startInlineEdit = () => {
     setIsUpdating(true);
@@ -66,6 +64,7 @@ const CategoryDetails = () => {
     });
     if (response.ok) {
       navigate("/CategoriesCRUD");
+      window.location.reload();
       return response.json();
     }
     throw new Error("Error deleting category");

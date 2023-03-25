@@ -14,6 +14,16 @@
       "name": "Tech Gadgets",
       "createdTime": "2023-02-27T08:44:22.290Z",
       "id": 7
+    },
+    {
+      "name": "Consoles",
+      "createdTime": "2023-03-21T10:16:53.797Z",
+      "id": 8
+    },
+    {
+      "name": "Accessories",
+      "createdTime": "2023-03-22T10:07:29.631Z",
+      "id": 9
     }
   ],
   "products": [
@@ -28,13 +38,13 @@
       "id": 4
     },
     {
-      "name": "Seafood Boil ",
-      "price": 50,
+      "name": "Seafood Boil",
+      "price": "55",
       "description": "boil shrimp",
       "code": 685624,
       "image": "https://www.foodandwine.com/thmb/t0elZfVmODnZF3NMKsSifhzgucE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/seafood-boil-FT-RECIPE0321-c085f410405b40cea0f460b12791c5d2.jpg",
       "categoryId": "6",
-      "createdTime": "2023-02-26T12:17:55.902Z",
+      "createdTime": "2023-03-25T11:20:39.394Z",
       "id": 5
     },
     {
@@ -86,6 +96,16 @@
       "categoryId": "7",
       "createdTime": "2023-02-27T08:47:20.639Z",
       "id": 10
+    },
+    {
+      "name": "Xbox Series S",
+      "price": "500",
+      "description": "Xbox next-gen",
+      "code": "685625",
+      "image": "https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/71NBQ2a52CL.jpg",
+      "categoryId": "8",
+      "createdTime": "2023-03-22T10:53:51.044Z",
+      "id": 11
     }
   ],
   "users": [
@@ -114,42 +134,6 @@
     {
       "cart_Products": [
         {
-          "id": 5,
-          "name": "Seafood Boil ",
-          "price": 50,
-          "count": 1
-        }
-      ],
-      "totalprice": 50,
-      "discountRate": 0,
-      "taxRate": 0,
-      "createdTime": "2023-02-26T13:14:47.090Z",
-      "id": 2
-    },
-    {
-      "cart_Products": [
-        {
-          "id": 4,
-          "name": "Fish",
-          "price": 100,
-          "count": 2
-        },
-        {
-          "id": 5,
-          "name": "Seafood Boil ",
-          "price": 50,
-          "count": 1
-        }
-      ],
-      "totalprice": 250,
-      "discountRate": 0,
-      "taxRate": 0,
-      "createdTime": "2023-02-26T13:32:50.946Z",
-      "id": 3
-    },
-    {
-      "cart_Products": [
-        {
           "id": 10,
           "name": "USB Cable",
           "price": 5,
@@ -161,6 +145,27 @@
       "taxRate": "20",
       "createdTime": "2023-02-27T08:51:39.240Z",
       "id": 4
+    },
+    {
+      "cart_Products": [
+        {
+          "id": 4,
+          "name": "Fish",
+          "price": "80",
+          "count": 1
+        },
+        {
+          "id": 5,
+          "name": "Seafood Boil ",
+          "price": 50,
+          "count": 1
+        }
+      ],
+      "totalprice": 130,
+      "discountRate": 0,
+      "taxRate": 0,
+      "createdTime": "2023-03-22T08:49:24.900Z",
+      "id": 5
     }
   ]
 }

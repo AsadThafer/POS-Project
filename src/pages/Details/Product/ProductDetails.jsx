@@ -6,11 +6,7 @@ import ConfirmDialog from "../../../components/ConfirmDialog/ConfirmDialog";
 import NotFound from "../../NotFound/NotFound";
 import moment from "moment";
 const ProductDetails = () => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [code, setCode] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [productForm, setProductForm] = useState({});
   const [isUpdating, setIsUpdating] = useState(false);
   const [product, setProduct] = useState({});
   const navigate = useNavigate();
@@ -23,25 +19,27 @@ const ProductDetails = () => {
       setProduct(data);
     };
     getProduct();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUpdating]);
 
   const startInlineEdit = () => {
     setIsUpdating(true);
-    setName(product.name);
-    setPrice(product.price);
-    setCode(product.code);
-    setDescription(product.description);
-    setImage(product.image);
+    setProductForm({
+      ...product,
+    });
   };
 
   const cancelInlineEdit = () => {
     setIsUpdating(false);
-    setName("");
-    setPrice("");
-    setCode("");
-    setDescription("");
-    setImage("");
+    setProductForm({
+      ...product,
+      image: "",
+      name: "",
+      price: "",
+      code: "",
+      description: "",
+    });
   };
 
   const updateProduct = async (id) => {
@@ -51,11 +49,7 @@ const ProductDetails = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name,
-        price,
-        code,
-        description,
-        image,
+        ...productForm,
         createdTime: new Date(),
       }),
     });
@@ -71,7 +65,9 @@ const ProductDetails = () => {
       method: "DELETE",
     });
     if (response.ok) {
-      fetchProduct();
+      navigate(`/CategoryDetails/${product.categoryId}`);
+      window.location.reload();
+      useQuery.refetch(["products", product.categoryId]);
       return response.json();
     }
     throw new Error("Error deleting product");
@@ -97,6 +93,13 @@ const ProductDetails = () => {
     );
   }
 
+  const UpdateProduct = (e) => {
+    setProductForm({
+      ...productForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <>
       <div className="Product">
@@ -111,44 +114,45 @@ const ProductDetails = () => {
           <input
             type="text"
             className="edit_input"
+            name="name"
             disabled={isUpdating ? false : true}
-            value={isUpdating ? name : product.name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
+            value={isUpdating ? productForm.name : product.name}
+            onChange={UpdateProduct}
+          />
           <h3>Product Price :</h3>
           <input
             type="text"
             className="edit_input"
             disabled={isUpdating ? false : true}
-            value={isUpdating ? price : product.price + ` $`}
-            onChange={(e) => setPrice(e.target.value)}
+            value={isUpdating ? productForm.price : product.price + ` $`}
+            name="price"
+            onChange={UpdateProduct}
           ></input>
           <h3>Product Code :</h3>
           <input
             type="text"
             className="edit_input"
+            name="code"
             disabled={isUpdating ? false : true}
-            value={isUpdating ? code : product.code}
-            onChange={(e) => setCode(e.target.value)}
+            value={isUpdating ? productForm.code : product.code}
+            onChange={UpdateProduct}
           ></input>
           <h3>Product Description :</h3>
           <input
             type="text"
             className="edit_input"
+            name="description"
             disabled={isUpdating ? false : true}
-            value={isUpdating ? description : product.description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={isUpdating ? productForm.description : product.description}
+            onChange={UpdateProduct}
           ></input>
           <h3>Product last edit time :</h3>
           <p>
-            {moment(product.createdTime).format("MMMM Do YYYY, h:mm:ss a")}
-            <p>
-              (
-              {product.createdTime
-                ? moment(product.createdTime).fromNow()
-                : "No time"}
-              )
-            </p>
+            {moment(product.createdTime).format("MMMM Do YYYY, h:mm:ss a")}(
+            {product.createdTime
+              ? moment(product.createdTime).fromNow()
+              : "No time"}
+            )
           </p>
           <Button
             design="update"
@@ -173,7 +177,7 @@ const ProductDetails = () => {
           </Button>
           <ConfirmDialog
             id={product.id}
-            onClick={() => deleteProduct(product.id)}
+            onConfirm={() => deleteProduct(product.id)} // pass the function to call when the user confirms
           />
           <h3>Product Category Id :{product.categoryId}</h3>
         </div>

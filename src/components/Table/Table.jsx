@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Table.css";
 import { Link } from "react-router-dom";
@@ -7,6 +7,11 @@ const Table = ({ type, data, children, addedToCartInProductmenu }) => {
   const [itemsPerPage, setItemsPerPage] = useState(6);
 
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [data, itemsPerPage]);
+
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const totalItems = data.length;
 
@@ -20,6 +25,16 @@ const Table = ({ type, data, children, addedToCartInProductmenu }) => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const rows = [];
+
+    if (data.length === 0) {
+      return (
+        <tr>
+          <td colSpan={3} style={{ textAlign: "center" }}>
+            No Products Found
+          </td>
+        </tr>
+      );
+    }
 
     for (let i = start; i < end; i += 3) {
       const row = data.slice(i, i + 3).map((item) => (
